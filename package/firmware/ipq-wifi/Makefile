@@ -14,7 +14,7 @@ define Build/Compile
 endef
 
 #ALLWIFIBOARDS:=<devicename>
-ALLWIFIBOARDS:=zyxel_wre6606
+ALLWIFIBOARDS:=zyxel_wre6606 glinet_gl-s1300
 ALLWIFIPACKAGES:=$(foreach BOARD,$(ALLWIFIBOARDS),ipq-wifi-$(BOARD))
 
 define Package/ipq-wifi-default
@@ -49,6 +49,7 @@ Don't install it for any other device!
 endef
 
 $(eval $(call generate-ipq-wifi-package,zyxel_wre6606,board-zyxel_wre6606.bin,ZyXEL WRE6606))
+$(eval $(call generate-ipq-wifi-package,glinet_gl-s1300,board-glinet_gl-s1300.bin,GL.iNet GL-S1300))
 #$(eval $(call generate-ipq-wifi-package,<devicename>,<filename>,<displayname>))
 
 $(foreach PACKAGE,$(ALLWIFIPACKAGES),$(eval $(call BuildPackage,$(PACKAGE))))

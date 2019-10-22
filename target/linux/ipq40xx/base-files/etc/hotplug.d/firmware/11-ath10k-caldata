@@ -121,6 +121,7 @@ case "$FIRMWARE" in
 	case "$board" in
 	8dev,jalapeno |\
 	glinet,gl-b1300 |\
+	glinet,gl-s1300 |\
 	qcom,ap-dk01.1-c1)
 		ath10kcal_extract "ART" 4096 12064
 		;;
@@ -156,6 +157,7 @@ case "$FIRMWARE" in
 	case "$board" in
 	8dev,jalapeno |\
 	glinet,gl-b1300 |\
+	glinet,gl-s1300 |\
 	qcom,ap-dk01.1-c1)
 		ath10kcal_extract "ART" 20480 12064
 		;;
