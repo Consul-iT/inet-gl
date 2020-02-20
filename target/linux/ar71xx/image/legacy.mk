@@ -274,7 +274,8 @@ wndr4300_mtdlayout=mtdparts=ar934x-nfc:256k(u-boot)ro,256k(u-boot-env)ro,256k(ca
 zcn1523h_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env)ro,6208k(rootfs),1472k(kernel),64k(configure)ro,64k(mfg)ro,64k(art)ro,7680k@0x50000(firmware)
 mynet_rext_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,7808k(firmware),64k(nvram)ro,64k(ART)ro
 zyx_nbg6716_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,64k(env)ro,64k(RFdata)ro,-(nbu);ar934x-nfc:2048k(zyxel_rfsd),2048k(romd),1024k(header),2048k(kernel),-(ubi)
-
+gl-ar300m_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env),16000k(firmware),64k(art)ro;spi0.1:-(ubi)
+gl-ar750s_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env),64k(art)ro,16000k(firmware);spi0.1:-(ubi)
 define Image/BuildKernel
 	cp $(KDIR)/vmlinux.elf $(VMLINUX).elf
 	cp $(KDIR)/vmlinux $(VMLINUX).bin
@@ -804,6 +805,36 @@ define Image/Build/ZyXELNAND
 endef
 
 
+Image/Build/GLNAND/initramfs=$(call MkuImageLzma/initramfs,$(2),$(3) $(4))
+Image/Build/GLNAND/buildkernel=$(call MkuImageLzma,$(2),$(3) $(4))
+
+ #$(1): rootfs image suffix
+ #$(2): Board name (small caps)
+ #$(3): Kernel board specific cmdline
+ #$(4): Kernel mtdparts definition
+ #$(5): suffix of the configuration file for ubinize
+define Image/Build/GLNAND
+        $(eval kernelsize=$(call mtdpartsize,kernel,$(4)))
+	echo "11111 $(kernelsize)    1111"
+        $(CP) $(KDIR)/root.squashfs-raw $(KDIR_TMP)/root.squashfs
+        echo -ne '\xde\xad\xc0\xde' > $(KDIR_TMP)/jffs2.eof
+        $(call ubinize,ubinize-$(5).ini,$(KDIR_TMP),$(KDIR_TMP)/$(2)-root.ubi,128KiB,2048,)
+
+        ( \
+                dd if=$(KDIR_TMP)/vmlinux-$(2).uImage \
+                        of=$(call imgname,kernel,$(2)).bin conv=sync; \
+                dd if=$(KDIR_TMP)/$(2)-root.ubi \
+                        of=$(call imgname,$(1),$(2)-rootfs).ubi bs=128k conv=sync; \
+        )
+        ( \
+                dd if=$(call imgname,kernel,$(2)).bin  ;   \
+                dd if=$(call imgname,$(1),$(2)-rootfs).ubi \
+        ) > $(call imgname,ubi-factory,$(2)).img
+
+        $(call Image/Build/SysupgradeNAND,$(2),squashfs,$(KDIR_TMP)/vmlinux-$(2).uImage)
+endef
+
+
 Image/Build/OpenMesh/buildkernel=$(call MkuImageLzma,$(2))
 Image/Build/OpenMesh/initramfs=$(call MkuImageLzma/initramfs,$(2),)
 
@@ -1010,7 +1041,6 @@ $(eval $(call SingleProfile,WHRHPG300N,64kraw,WHRHPGN,whr-hp-gn,WHR-HP-GN,ttyS0,
 $(eval $(call SingleProfile,WHRHPG300N,64kraw,WLAEAG300N,wlae-ag300n,WLAE-AG300N,ttyS0,115200,$$(whrhpg300n_mtdlayout),WLAE-AG300N))
 
 $(eval $(call SingleProfile,ZyXEL,64k,NBG_460N_550N_550NH,nbg460n_550n_550nh,NBG460N,ttyS0,115200,NBG-460N))
-
 endif # ifeq ($(SUBTARGET),tiny)
 
 
@@ -1021,7 +1051,8 @@ $(eval $(call SingleProfile,NetgearNAND,64k,WNDR4300V1,wndr4300,WNDR4300,ttyS0,1
 $(eval $(call SingleProfile,NetgearNAND,64k,R6100,r6100,R6100,ttyS0,115200,$$(r6100_mtdlayout),0x36303030,R6100,"",-H 29764434+0+128+128+2x2+2x2,wndr4300))
 
 $(eval $(call SingleProfile,ZyXELNAND,128k,NBG6716,nbg6716,NBG6716,ttyS0,115200,NBG6716,$$(zyx_nbg6716_mtdlayout),mem=256M))
-
+$(eval $(call SingleProfile,GLNAND,64k,GL-AR300M,gl-ar300m,GL-AR300M,ttyS0,115200,$$(gl-ar300m_mtdlayout),gl-ar300m))
+$(eval $(call SingleProfile,GLNAND,64k,GL-AR750S,gl-ar750s,GL-AR750S,ttyS0,115200,$$(gl-ar750s_mtdlayout),gl-ar750s))
 endif # ifeq ($(SUBTARGET),nand)
 
 define Image/Build/squashfs

@@ -73,7 +73,6 @@ get_status_led() {
 	fritz300e|\
 	fritz4020|\
 	fritz450e|\
-	gl-usb150|\
 	mr12|\
 	mr16|\
 	nbg6616|\
@@ -102,10 +101,7 @@ get_status_led() {
 		;;
 	ap90q|\
 	cpe830|\
-	cpe870|\
-	gl-ar300m|\
-	gl-inet|\
-	gl-mifi)
+	cpe870)
 		status_led="$board:green:lan"
 		;;
 	ap91-5g|\
@@ -246,7 +242,6 @@ get_status_led() {
 	esr1750)
 		status_led="$board:amber:power"
 		;;
-	gl-ar750|\
 	hiveap-121|\
 	nbg6716|\
 	wam250)
