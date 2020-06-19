@@ -2806,4 +2806,3 @@
 +	.name = "Paragon(XTX)",
 +	.ops = &paragon_spinand_manuf_ops,
 +};
-

@@ -1,0 +1,1069 @@
+
+build_dir/target-mips_24kc_musl/gl-repeater-3.1.2/gl_health:     file format elf32-tradbigmips
+
+
+Disassembly of section .init:
+
+00400bd4 <_init>:
+  400bd4:	27bdffe0 	addiu	sp,sp,-32
+  400bd8:	afbc0018 	sw	gp,24(sp)
+  400bdc:	afbf001c 	sw	ra,28(sp)
+  400be0:	04110001 	bal	400be8 <_init+0x14>
+  400be4:	00000000 	nop
+  400be8:	3c190040 	lui	t9,0x40
+  400bec:	27390ddc 	addiu	t9,t9,3548
+  400bf0:	0320f809 	jalr	t9
+  400bf4:	00000000 	nop
+  400bf8:	04110001 	bal	400c00 <_init+0x2c>
+  400bfc:	00000000 	nop
+  400c00:	3c190040 	lui	t9,0x40
+  400c04:	27391370 	addiu	t9,t9,4976
+  400c08:	0320f809 	jalr	t9
+  400c0c:	00000000 	nop
+  400c10:	8fbc0018 	lw	gp,24(sp)
+  400c14:	8fbf001c 	lw	ra,28(sp)
+  400c18:	03e00008 	jr	ra
+  400c1c:	27bd0020 	addiu	sp,sp,32
+
+Disassembly of section .text:
+
+00400c20 <main>:
+  400c20:	64e4      	save	32,ra,s0
+  400c22:	1a00 03f8 	jal	400fe0 <check_is_bridge_mode>
+  400c26:	6500      	nop
+  400c28:	220b      	beqz	v0,400c40 <main+0x20>
+  400c2a:	6f16      	li	a3,22
+  400c2c:	b615      	lw	a2,400c80 <__pool_main_10>
+  400c2e:	b516      	lw	a1,400c84 <__pool_main_10+0x4>
+  400c30:	6801      	li	s0,1
+  400c32:	6c06      	li	a0,6
+  400c34:	1a00 0644 	jal	401910 <syslog@mips16plt>
+  400c38:	e80b      	neg	s0
+  400c3a:	6750      	move	v0,s0
+  400c3c:	6464      	restore	32,ra,s0
+  400c3e:	e8a0      	jrc	ra
+  400c40:	1a00 0410 	jal	401040 <check_is_mesh_mode>
+  400c44:	6500      	nop
+  400c46:	6702      	move	s0,v0
+  400c48:	2202      	beqz	v0,400c4e <main+0x2e>
+  400c4a:	6f1a      	li	a3,26
+  400c4c:	17ef      	b	400c2c <main+0xc>
+  400c4e:	1a00 0658 	jal	401960 <wifi_check_is_auto_repeater@mips16plt>
+  400c52:	6500      	nop
+  400c54:	2a04      	bnez	v0,400c5e <main+0x3e>
+  400c56:	6f1e      	li	a3,30
+  400c58:	b60a      	lw	a2,400c80 <__pool_main_10>
+  400c5a:	b50c      	lw	a1,400c88 <__pool_main_10+0x8>
+  400c5c:	17e9      	b	400c30 <main+0x10>
+  400c5e:	1a00 061c 	jal	401870 <wifi_check_sta_is_configed@mips16plt>
+  400c62:	6500      	nop
+  400c64:	2a04      	bnez	v0,400c6e <main+0x4e>
+  400c66:	6f22      	li	a3,34
+  400c68:	b606      	lw	a2,400c80 <__pool_main_10>
+  400c6a:	b509      	lw	a1,400c8c <__pool_main_10+0xc>
+  400c6c:	17e1      	b	400c30 <main+0x10>
+  400c6e:	b509      	lw	a1,400c90 <__pool_main_10+0x10>
+  400c70:	1a00 0644 	jal	401910 <syslog@mips16plt>
+  400c74:	6c06      	li	a0,6
+  400c76:	1a00 0448 	jal	401120 <net_maintain_health_cancelable>
+  400c7a:	6500      	nop
+  400c7c:	17de      	b	400c3a <main+0x1a>
+  400c7e:	6500      	nop
+
+00400c80 <__pool_main_10>:
+  400c80:	0040 1480 0040 1400 0040 1418 0040 1450     .@...@...@...@.P
+  400c90:	0040 1468                                   .@.h
+
+00400c94 <__pend_main_10>:
+	...
+
+00400ca0 <__start>:
+  400ca0:	04110004 	bal	400cb4 <__start+0x14>
+  400ca4:	0000f025 	move	s8,zero
+  400ca8:	00400ca8 	0x400ca8
+  400cac:	00400ce0 	0x400ce0
+  400cb0:	004001c0 	0x4001c0
+  400cb4:	8ffc0000 	lw	gp,0(ra)
+  400cb8:	03fce023 	subu	gp,ra,gp
+  400cbc:	03a02025 	move	a0,sp
+  400cc0:	8fe50008 	lw	a1,8(ra)
+  400cc4:	00bc2821 	addu	a1,a1,gp
+  400cc8:	8ff90004 	lw	t9,4(ra)
+  400ccc:	033cc821 	addu	t9,t9,gp
+  400cd0:	2401fff8 	li	at,-8
+  400cd4:	03a1e824 	and	sp,sp,at
+  400cd8:	0320f809 	jalr	t9
+  400cdc:	27bdfff0 	addiu	sp,sp,-16
+
+00400ce0 <_start_c>:
+  400ce0:	27bdffd8 	addiu	sp,sp,-40
+  400ce4:	3c020040 	lui	v0,0x40
+  400ce8:	8c850000 	lw	a1,0(a0)
+  400cec:	244213c0 	addiu	v0,v0,5056
+  400cf0:	3c070040 	lui	a3,0x40
+  400cf4:	24860004 	addiu	a2,a0,4
+  400cf8:	3c040040 	lui	a0,0x40
+  400cfc:	24e70bd4 	addiu	a3,a3,3028
+  400d00:	afa00014 	sw	zero,20(sp)
+  400d04:	afa20010 	sw	v0,16(sp)
+  400d08:	afbf0024 	sw	ra,36(sp)
+  400d0c:	0c100614 	jal	401850 <__libc_start_main@plt>
+  400d10:	24840c21 	addiu	a0,a0,3105
+	...
+
+00400d20 <__do_global_dtors_aux>:
+  400d20:	27bdffd0 	addiu	sp,sp,-48
+  400d24:	afb10020 	sw	s1,32(sp)
+  400d28:	3c110041 	lui	s1,0x41
+  400d2c:	afbf002c 	sw	ra,44(sp)
+  400d30:	92222030 	lbu	v0,8240(s1)
+  400d34:	afb30028 	sw	s3,40(sp)
+  400d38:	afb20024 	sw	s2,36(sp)
+  400d3c:	14400018 	bnez	v0,400da0 <__do_global_dtors_aux+0x80>
+  400d40:	afb0001c 	sw	s0,28(sp)
+  400d44:	3c100041 	lui	s0,0x41
+  400d48:	3c020041 	lui	v0,0x41
+  400d4c:	24421f64 	addiu	v0,v0,8036
+  400d50:	26101f68 	addiu	s0,s0,8040
+  400d54:	02028023 	subu	s0,s0,v0
+  400d58:	00108083 	sra	s0,s0,0x2
+  400d5c:	3c020041 	lui	v0,0x41
+  400d60:	2610ffff 	addiu	s0,s0,-1
+  400d64:	3c130041 	lui	s3,0x41
+  400d68:	24521f64 	addiu	s2,v0,8036
+  400d6c:	8e622034 	lw	v0,8244(s3)
+  400d70:	0050182b 	sltu	v1,v0,s0
+  400d74:	14600011 	bnez	v1,400dbc <__do_global_dtors_aux+0x9c>
+  400d78:	24420001 	addiu	v0,v0,1
+  400d7c:	3c020040 	lui	v0,0x40
+  400d80:	24421860 	addiu	v0,v0,6240
+  400d84:	10400005 	beqz	v0,400d9c <__do_global_dtors_aux+0x7c>
+  400d88:	24020001 	li	v0,1
+  400d8c:	3c040040 	lui	a0,0x40
+  400d90:	0c100618 	jal	401860 <__deregister_frame_info@plt>
+  400d94:	24841800 	addiu	a0,a0,6144
+  400d98:	24020001 	li	v0,1
+  400d9c:	a2222030 	sb	v0,8240(s1)
+  400da0:	8fbf002c 	lw	ra,44(sp)
+  400da4:	8fb30028 	lw	s3,40(sp)
+  400da8:	8fb20024 	lw	s2,36(sp)
+  400dac:	8fb10020 	lw	s1,32(sp)
+  400db0:	8fb0001c 	lw	s0,28(sp)
+  400db4:	03e00008 	jr	ra
+  400db8:	27bd0030 	addiu	sp,sp,48
+  400dbc:	ae622034 	sw	v0,8244(s3)
+  400dc0:	00021080 	sll	v0,v0,0x2
+  400dc4:	02421021 	addu	v0,s2,v0
+  400dc8:	8c590000 	lw	t9,0(v0)
+  400dcc:	0320f809 	jalr	t9
+  400dd0:	00000000 	nop
+  400dd4:	1000ffe6 	b	400d70 <__do_global_dtors_aux+0x50>
+  400dd8:	8e622034 	lw	v0,8244(s3)
+
+00400ddc <frame_dummy>:
+  400ddc:	3c020040 	lui	v0,0x40
+  400de0:	24421840 	addiu	v0,v0,6208
+  400de4:	10400005 	beqz	v0,400dfc <frame_dummy+0x20>
+  400de8:	3c050041 	lui	a1,0x41
+  400dec:	3c040040 	lui	a0,0x40
+  400df0:	24a52038 	addiu	a1,a1,8248
+  400df4:	08100610 	j	401840 <__register_frame_info@plt>
+  400df8:	24841800 	addiu	a0,a0,6144
+  400dfc:	03e00008 	jr	ra
+  400e00:	00000000 	nop
+	...
+
+00400e10 <net_enable_health_scan>:
+  400e10:	b202      	lw	v0,400e18 <__pool_net_enable_health_scan_2>
+  400e12:	e820      	jr	ra
+  400e14:	c280      	sb	a0,0(v0)
+  400e16:	6500      	nop
+
+00400e18 <__pool_net_enable_health_scan_2>:
+  400e18:	0041 2050                                   .A P
+
+00400e1c <net_health_status>:
+  400e1c:	b202      	lw	v0,400e24 <__pool_net_health_status_4>
+  400e1e:	e820      	jr	ra
+  400e20:	a240      	lbu	v0,0(v0)
+  400e22:	6500      	nop
+
+00400e24 <__pool_net_health_status_4>:
+  400e24:	0041 2050                                   .A P
+
+00400e28 <net_reset_uci_for_ap_only>:
+  400e28:	f010 64f1 	save	136,ra,s0-s1
+  400e2c:	b12d      	lw	s1,400ee0 <__pool_net_reset_uci_for_ap_only_22>
+  400e2e:	9940      	lw	v0,0(s1)
+  400e30:	1a00 0670 	jal	4019c0 <guci2_init@mips16plt>
+  400e34:	d21d      	sw	v0,116(sp)
+  400e36:	6702      	move	s0,v0
+  400e38:	0609      	addiu	a2,sp,36
+  400e3a:	b52b      	lw	a1,400ee4 <__pool_net_reset_uci_for_ap_only_22+0x4>
+  400e3c:	1a00 0688 	jal	401a20 <guci2_get@mips16plt>
+  400e40:	6782      	move	a0,v0
+  400e42:	060e      	addiu	a2,sp,56
+  400e44:	b529      	lw	a1,400ee8 <__pool_net_reset_uci_for_ap_only_22+0x8>
+  400e46:	1a00 0688 	jal	401a20 <guci2_get@mips16plt>
+  400e4a:	6790      	move	a0,s0
+  400e4c:	0613      	addiu	a2,sp,76
+  400e4e:	b528      	lw	a1,400eec <__pool_net_reset_uci_for_ap_only_22+0xc>
+  400e50:	1a00 0688 	jal	401a20 <guci2_get@mips16plt>
+  400e54:	6790      	move	a0,s0
+  400e56:	0618      	addiu	a2,sp,96
+  400e58:	b526      	lw	a1,400ef0 <__pool_net_reset_uci_for_ap_only_22+0x10>
+  400e5a:	1a00 0688 	jal	401a20 <guci2_get@mips16plt>
+  400e5e:	6790      	move	a0,s0
+  400e60:	b525      	lw	a1,400ef4 <__pool_net_reset_uci_for_ap_only_22+0x14>
+  400e62:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  400e66:	040e      	addiu	a0,sp,56
+  400e68:	d107      	sw	s1,28(sp)
+  400e6a:	2235      	beqz	v0,400ed6 <net_reset_uci_for_ap_only+0xae>
+  400e6c:	b622      	lw	a2,400ef4 <__pool_net_reset_uci_for_ap_only_22+0x14>
+  400e6e:	b51f      	lw	a1,400ee8 <__pool_net_reset_uci_for_ap_only_22+0x8>
+  400e70:	6790      	move	a0,s0
+  400e72:	1a00 0620 	jal	401880 <guci2_set@mips16plt>
+  400e76:	6901      	li	s1,1
+  400e78:	b520      	lw	a1,400ef8 <__pool_net_reset_uci_for_ap_only_22+0x18>
+  400e7a:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  400e7e:	0413      	addiu	a0,sp,76
+  400e80:	2206      	beqz	v0,400e8e <net_reset_uci_for_ap_only+0x66>
+  400e82:	b61e      	lw	a2,400ef8 <__pool_net_reset_uci_for_ap_only_22+0x18>
+  400e84:	b51a      	lw	a1,400eec <__pool_net_reset_uci_for_ap_only_22+0xc>
+  400e86:	6790      	move	a0,s0
+  400e88:	1a00 0620 	jal	401880 <guci2_set@mips16plt>
+  400e8c:	6901      	li	s1,1
+  400e8e:	b51c      	lw	a1,400efc <__pool_net_reset_uci_for_ap_only_22+0x1c>
+  400e90:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  400e94:	0418      	addiu	a0,sp,96
+  400e96:	2206      	beqz	v0,400ea4 <net_reset_uci_for_ap_only+0x7c>
+  400e98:	b619      	lw	a2,400efc <__pool_net_reset_uci_for_ap_only_22+0x1c>
+  400e9a:	b516      	lw	a1,400ef0 <__pool_net_reset_uci_for_ap_only_22+0x10>
+  400e9c:	6790      	move	a0,s0
+  400e9e:	1a00 0620 	jal	401880 <guci2_set@mips16plt>
+  400ea2:	6901      	li	s1,1
+  400ea4:	b517      	lw	a1,400f00 <__pool_net_reset_uci_for_ap_only_22+0x20>
+  400ea6:	1a00 0638 	jal	4018e0 <guci2_commit@mips16plt>
+  400eaa:	6790      	move	a0,s0
+  400eac:	b516      	lw	a1,400f04 <__pool_net_reset_uci_for_ap_only_22+0x24>
+  400eae:	1a00 0638 	jal	4018e0 <guci2_commit@mips16plt>
+  400eb2:	6790      	move	a0,s0
+  400eb4:	1a00 066c 	jal	4019b0 <guci2_free@mips16plt>
+  400eb8:	6790      	move	a0,s0
+  400eba:	2104      	beqz	s1,400ec4 <net_reset_uci_for_ap_only+0x9c>
+  400ebc:	b413      	lw	a0,400f08 <__pool_net_reset_uci_for_ap_only_22+0x28>
+  400ebe:	1a00 0630 	jal	4018c0 <system@mips16plt>
+  400ec2:	6500      	nop
+  400ec4:	9407      	lw	a0,28(sp)
+  400ec6:	931d      	lw	v1,116(sp)
+  400ec8:	6751      	move	v0,s1
+  400eca:	9c80      	lw	a0,0(a0)
+  400ecc:	eb8e      	xor	v1,a0
+  400ece:	2305      	beqz	v1,400eda <net_reset_uci_for_ap_only+0xb2>
+  400ed0:	1a00 0698 	jal	401a60 <__stack_chk_fail@mips16plt>
+  400ed4:	6500      	nop
+  400ed6:	6900      	li	s1,0
+  400ed8:	17cf      	b	400e78 <net_reset_uci_for_ap_only+0x50>
+  400eda:	f010 6471 	restore	136,ra,s0-s1
+  400ede:	e8a0      	jrc	ra
+
+00400ee0 <__pool_net_reset_uci_for_ap_only_22>:
+  400ee0:	0041 2020 0040 1490 0040 14a4 0040 14bc     .A  .@...@...@..
+  400ef0:	0040 14cc 0040 14e0 0040 1550 0040 14e8     .@...@...@.P.@..
+  400f00:	0040 14f0 0040 14fc 0040 1504               .@...@...@..
+
+00400f0c <net_wait_for_reseting_network>:
+  400f0c:	f00e 64f6 	save	a0-a3,48,ra,s0-s1
+  400f10:	b72c      	lw	a3,400fc0 <__pool_net_wait_for_reseting_network_63>
+  400f12:	b52d      	lw	a1,400fc4 <__pool_net_wait_for_reseting_network_63+0x4>
+  400f14:	6c06      	li	a0,6
+  400f16:	6726      	move	s1,a2
+  400f18:	1a00 0644 	jal	401910 <syslog@mips16plt>
+  400f1c:	6e53      	li	a2,83
+  400f1e:	1a00 065c 	jal	401970 <get_model_name@mips16plt>
+  400f22:	6500      	nop
+  400f24:	6782      	move	a0,v0
+  400f26:	b529      	lw	a1,400fc8 <__pool_net_wait_for_reseting_network_63+0x8>
+  400f28:	1a00 0654 	jal	401950 <strncasecmp@mips16plt>
+  400f2c:	6e05      	li	a2,5
+  400f2e:	2a01      	bnez	v0,400f32 <net_wait_for_reseting_network+0x26>
+  400f30:	6900      	li	s1,0
+  400f32:	6800      	li	s0,0
+  400f34:	920f      	lw	v0,60(sp)
+  400f36:	e842      	slt	s0,v0
+  400f38:	6105      	btnez	400f44 <net_wait_for_reseting_network+0x38>
+  400f3a:	d204      	sw	v0,16(sp)
+  400f3c:	b721      	lw	a3,400fc0 <__pool_net_wait_for_reseting_network_63>
+  400f3e:	6e8c      	li	a2,140
+  400f40:	b523      	lw	a1,400fcc <__pool_net_wait_for_reseting_network_63+0xc>
+  400f42:	1037      	b	400fb2 <net_wait_for_reseting_network+0xa6>
+  400f44:	1a00 0640 	jal	401900 <sleep@mips16plt>
+  400f48:	6c01      	li	a0,1
+  400f4a:	920c      	lw	v0,48(sp)
+  400f4c:	220d      	beqz	v0,400f68 <net_wait_for_reseting_network+0x5c>
+  400f4e:	1a00 0634 	jal	4018d0 <wifi_check_ap_is_ok@mips16plt>
+  400f52:	6c00      	li	a0,0
+  400f54:	2209      	beqz	v0,400f68 <net_wait_for_reseting_network+0x5c>
+  400f56:	d004      	sw	s0,16(sp)
+  400f58:	b71a      	lw	a3,400fc0 <__pool_net_wait_for_reseting_network_63>
+  400f5a:	6e6e      	li	a2,110
+  400f5c:	b51d      	lw	a1,400fd0 <__pool_net_wait_for_reseting_network_63+0x10>
+  400f5e:	1a00 0644 	jal	401910 <syslog@mips16plt>
+  400f62:	6c06      	li	a0,6
+  400f64:	6a00      	li	v0,0
+  400f66:	d20c      	sw	v0,48(sp)
+  400f68:	920d      	lw	v0,52(sp)
+  400f6a:	220d      	beqz	v0,400f86 <net_wait_for_reseting_network+0x7a>
+  400f6c:	1a00 067c 	jal	4019f0 <wifi_check_sta_is_ok@mips16plt>
+  400f70:	6500      	nop
+  400f72:	2209      	beqz	v0,400f86 <net_wait_for_reseting_network+0x7a>
+  400f74:	d004      	sw	s0,16(sp)
+  400f76:	b713      	lw	a3,400fc0 <__pool_net_wait_for_reseting_network_63>
+  400f78:	6e79      	li	a2,121
+  400f7a:	b517      	lw	a1,400fd4 <__pool_net_wait_for_reseting_network_63+0x14>
+  400f7c:	1a00 0644 	jal	401910 <syslog@mips16plt>
+  400f80:	6c06      	li	a0,6
+  400f82:	6a00      	li	v0,0
+  400f84:	d20d      	sw	v0,52(sp)
+  400f86:	210c      	beqz	s1,400fa0 <net_wait_for_reseting_network+0x94>
+  400f88:	1a00 063c 	jal	4018f0 <wifi_check_wpa_is_running@mips16plt>
+  400f8c:	6500      	nop
+  400f8e:	2208      	beqz	v0,400fa0 <net_wait_for_reseting_network+0x94>
+  400f90:	d004      	sw	s0,16(sp)
+  400f92:	b70c      	lw	a3,400fc0 <__pool_net_wait_for_reseting_network_63>
+  400f94:	6e81      	li	a2,129
+  400f96:	b511      	lw	a1,400fd8 <__pool_net_wait_for_reseting_network_63+0x18>
+  400f98:	6c06      	li	a0,6
+  400f9a:	1a00 0644 	jal	401910 <syslog@mips16plt>
+  400f9e:	6900      	li	s1,0
+  400fa0:	920c      	lw	v0,48(sp)
+  400fa2:	2a0c      	bnez	v0,400fbc <net_wait_for_reseting_network+0xb0>
+  400fa4:	920d      	lw	v0,52(sp)
+  400fa6:	2a0a      	bnez	v0,400fbc <net_wait_for_reseting_network+0xb0>
+  400fa8:	2909      	bnez	s1,400fbc <net_wait_for_reseting_network+0xb0>
+  400faa:	d004      	sw	s0,16(sp)
+  400fac:	b705      	lw	a3,400fc0 <__pool_net_wait_for_reseting_network_63>
+  400fae:	6e87      	li	a2,135
+  400fb0:	b50b      	lw	a1,400fdc <__pool_net_wait_for_reseting_network_63+0x1c>
+  400fb2:	1a00 0644 	jal	401910 <syslog@mips16plt>
+  400fb6:	6c06      	li	a0,6
+  400fb8:	6476      	restore	48,ra,s0-s1
+  400fba:	e8a0      	jrc	ra
+  400fbc:	4801      	addiu	s0,1
+  400fbe:	17ba      	b	400f34 <net_wait_for_reseting_network+0x28>
+
+00400fc0 <__pool_net_wait_for_reseting_network_63>:
+  400fc0:	0040 1520 0040 152c 0040 154c 0040 15e0     .@. .@.,.@.L.@..
+  400fd0:	0040 1554 0040 1578 0040 159c 0040 15c0     .@.T.@.x.@...@..
+
+00400fe0 <check_is_bridge_mode>:
+  400fe0:	64f7      	save	56,ra,s0-s1
+  400fe2:	b015      	lw	s0,401034 <__pool_check_is_bridge_mode_76>
+  400fe4:	9840      	lw	v0,0(s0)
+  400fe6:	1a00 0670 	jal	4019c0 <guci2_init@mips16plt>
+  400fea:	d209      	sw	v0,36(sp)
+  400fec:	677d      	move	v1,sp
+  400fee:	6722      	move	s1,v0
+  400ff0:	6a00      	li	v0,0
+  400ff2:	cb50      	sh	v0,32(v1)
+  400ff4:	0606      	addiu	a2,sp,24
+  400ff6:	b511      	lw	a1,401038 <__pool_check_is_bridge_mode_76+0x4>
+  400ff8:	6791      	move	a0,s1
+  400ffa:	d206      	sw	v0,24(sp)
+  400ffc:	1a00 0688 	jal	401a20 <guci2_get@mips16plt>
+  401000:	d207      	sw	v0,28(sp)
+  401002:	1a00 066c 	jal	4019b0 <guci2_free@mips16plt>
+  401006:	6791      	move	a0,s1
+  401008:	675d      	move	v0,sp
+  40100a:	8258      	lb	v0,24(v0)
+  40100c:	220f      	beqz	v0,40102c <check_is_bridge_mode+0x4c>
+  40100e:	b50c      	lw	a1,40103c <__pool_check_is_bridge_mode_76+0x8>
+  401010:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  401014:	0406      	addiu	a0,sp,24
+  401016:	5a01      	sltiu	v0,1
+  401018:	6758      	move	v0,t8
+  40101a:	6b01      	li	v1,1
+  40101c:	ea6e      	xor	v0,v1
+  40101e:	9309      	lw	v1,36(sp)
+  401020:	9880      	lw	a0,0(s0)
+  401022:	eb8e      	xor	v1,a0
+  401024:	2305      	beqz	v1,401030 <check_is_bridge_mode+0x50>
+  401026:	1a00 0698 	jal	401a60 <__stack_chk_fail@mips16plt>
+  40102a:	6500      	nop
+  40102c:	6a00      	li	v0,0
+  40102e:	17f7      	b	40101e <check_is_bridge_mode+0x3e>
+  401030:	6477      	restore	56,ra,s0-s1
+  401032:	e8a0      	jrc	ra
+
+00401034 <__pool_check_is_bridge_mode_76>:
+  401034:	0041 2020 0040 1618 0040 1630               .A  .@...@.0
+
+00401040 <check_is_mesh_mode>:
+  401040:	64e7      	save	56,ra,s0
+  401042:	b013      	lw	s0,40108c <__pool_check_is_mesh_mode_84>
+  401044:	0507      	addiu	a1,sp,28
+  401046:	9840      	lw	v0,0(s0)
+  401048:	b412      	lw	a0,401090 <__pool_check_is_mesh_mode_84+0x4>
+  40104a:	d20b      	sw	v0,44(sp)
+  40104c:	6a00      	li	v0,0
+  40104e:	d207      	sw	v0,28(sp)
+  401050:	d208      	sw	v0,32(sp)
+  401052:	d209      	sw	v0,36(sp)
+  401054:	1a00 0650 	jal	401940 <getUciReturn@mips16plt>
+  401058:	d20a      	sw	v0,40(sp)
+  40105a:	0607      	addiu	a2,sp,28
+  40105c:	b50e      	lw	a1,401094 <__pool_check_is_mesh_mode_84+0x8>
+  40105e:	1a00 0644 	jal	401910 <syslog@mips16plt>
+  401062:	6c06      	li	a0,6
+  401064:	675d      	move	v0,sp
+  401066:	825c      	lb	v0,28(v0)
+  401068:	220d      	beqz	v0,401084 <check_is_mesh_mode+0x44>
+  40106a:	b50c      	lw	a1,401098 <__pool_check_is_mesh_mode_84+0xc>
+  40106c:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  401070:	0407      	addiu	a0,sp,28
+  401072:	5a01      	sltiu	v0,1
+  401074:	6758      	move	v0,t8
+  401076:	930b      	lw	v1,44(sp)
+  401078:	9880      	lw	a0,0(s0)
+  40107a:	eb8e      	xor	v1,a0
+  40107c:	2305      	beqz	v1,401088 <check_is_mesh_mode+0x48>
+  40107e:	1a00 0698 	jal	401a60 <__stack_chk_fail@mips16plt>
+  401082:	6500      	nop
+  401084:	6a00      	li	v0,0
+  401086:	17f7      	b	401076 <check_is_mesh_mode+0x36>
+  401088:	6467      	restore	56,ra,s0
+  40108a:	e8a0      	jrc	ra
+
+0040108c <__pool_check_is_mesh_mode_84>:
+  40108c:	0041 2020 0040 1638 0040 1658 0040 166c     .A  .@.8.@.X.@.l
+
+0040109c <block_scan>:
+  40109c:	64c4      	save	32,ra
+  40109e:	1a00 064c 	jal	401930 <wifi_enable_sta_in_uci@mips16plt>
+  4010a2:	6c00      	li	a0,0
+  4010a4:	b407      	lw	a0,4010c0 <__pool_block_scan_93>
+  4010a6:	1a00 0664 	jal	401990 <execCommand@mips16plt>
+  4010aa:	6500      	nop
+  4010ac:	b206      	lw	v0,4010c4 <__pool_block_scan_93+0x4>
+  4010ae:	a240      	lbu	v0,0(v0)
+  4010b0:	2a02      	bnez	v0,4010b6 <block_scan+0x1a>
+  4010b2:	6444      	restore	32,ra
+  4010b4:	e8a0      	jrc	ra
+  4010b6:	1a00 0640 	jal	401900 <sleep@mips16plt>
+  4010ba:	6c0a      	li	a0,10
+  4010bc:	17f7      	b	4010ac <block_scan+0x10>
+  4010be:	6500      	nop
+
+004010c0 <__pool_block_scan_93>:
+  4010c0:	0040 1674 0041 2050                         .@.t.A P
+
+004010c8 <wait_for_disable_wlan_sta>:
+  4010c8:	64c4      	save	32,ra
+  4010ca:	1a00 064c 	jal	401930 <wifi_enable_sta_in_uci@mips16plt>
+  4010ce:	6c00      	li	a0,0
+  4010d0:	b405      	lw	a0,4010e4 <__pool_wait_for_disable_wlan_sta_97>
+  4010d2:	1a00 0664 	jal	401990 <execCommand@mips16plt>
+  4010d6:	6500      	nop
+  4010d8:	1a00 0640 	jal	401900 <sleep@mips16plt>
+  4010dc:	6c06      	li	a0,6
+  4010de:	6444      	restore	32,ra
+  4010e0:	e8a0      	jrc	ra
+  4010e2:	6500      	nop
+
+004010e4 <__pool_wait_for_disable_wlan_sta_97>:
+  4010e4:	0040 1674                                   .@.t
+
+004010e8 <net_check_lan_is_ready>:
+  4010e8:	f010 64ee 	save	240,ra,s0
+  4010ec:	b00b      	lw	s0,401118 <__pool_net_check_lan_is_ready_101>
+  4010ee:	b40c      	lw	a0,40111c <__pool_net_check_lan_is_ready_101+0x4>
+  4010f0:	9840      	lw	v0,0(s0)
+  4010f2:	0507      	addiu	a1,sp,28
+  4010f4:	1a00 0668 	jal	4019a0 <getShellCommandReturnLine@mips16plt>
+  4010f8:	d239      	sw	v0,228(sp)
+  4010fa:	9339      	lw	v1,228(sp)
+  4010fc:	9880      	lw	a0,0(s0)
+  4010fe:	675d      	move	v0,sp
+  401100:	eb8e      	xor	v1,a0
+  401102:	a25c      	lbu	v0,28(v0)
+  401104:	2303      	beqz	v1,40110c <net_check_lan_is_ready+0x24>
+  401106:	1a00 0698 	jal	401a60 <__stack_chk_fail@mips16plt>
+  40110a:	6500      	nop
+  40110c:	ea4b      	neg	v0
+  40110e:	f010 646e 	restore	240,ra,s0
+  401112:	f7c0 3242 	srl	v0,31
+  401116:	e8a0      	jrc	ra
+
+00401118 <__pool_net_check_lan_is_ready_101>:
+  401118:	0041 2020 0040 1698                         .A  .@..
+
+00401120 <net_maintain_health_cancelable>:
+  401120:	b282      	lw	v0,401328 <__pool_net_maintain_health_cancelable_178>
+  401122:	f080 64ff 	save	1144,ra,s0-s1
+  401126:	9a40      	lw	v0,0(v0)
+  401128:	6900      	li	s1,0
+  40112a:	f460 d204 	sw	v0,1124(sp)
+  40112e:	6a00      	li	v0,0
+  401130:	d207      	sw	v0,28(sp)
+  401132:	1a00 0658 	jal	401960 <wifi_check_is_auto_repeater@mips16plt>
+  401136:	6500      	nop
+  401138:	2a03      	bnez	v0,401140 <net_maintain_health_cancelable+0x20>
+  40113a:	1a00 0660 	jal	401980 <exit@mips16plt>
+  40113e:	6c00      	li	a0,0
+  401140:	b47b      	lw	a0,40132c <__pool_net_maintain_health_cancelable_178+0x4>
+  401142:	1a00 0648 	jal	401920 <cmm_check_file_is_exist@mips16plt>
+  401146:	6500      	nop
+  401148:	22f8      	beqz	v0,40113a <net_maintain_health_cancelable+0x1a>
+  40114a:	1a00 03f8 	jal	400fe0 <check_is_bridge_mode>
+  40114e:	6500      	nop
+  401150:	2205      	beqz	v0,40115c <net_maintain_health_cancelable+0x3c>
+  401152:	6c1e      	li	a0,30
+  401154:	1a00 0640 	jal	401900 <sleep@mips16plt>
+  401158:	6500      	nop
+  40115a:	17eb      	b	401132 <net_maintain_health_cancelable+0x12>
+  40115c:	1a00 0410 	jal	401040 <check_is_mesh_mode>
+  401160:	6500      	nop
+  401162:	2af7      	bnez	v0,401152 <net_maintain_health_cancelable+0x32>
+  401164:	1a00 043a 	jal	4010e8 <net_check_lan_is_ready>
+  401168:	6500      	nop
+  40116a:	2a07      	bnez	v0,40117a <net_maintain_health_cancelable+0x5a>
+  40116c:	6fd8      	li	a3,216
+  40116e:	b671      	lw	a2,401330 <__pool_net_maintain_health_cancelable_178+0x8>
+  401170:	b571      	lw	a1,401334 <__pool_net_maintain_health_cancelable_178+0xc>
+  401172:	1a00 0644 	jal	401910 <syslog@mips16plt>
+  401176:	6c06      	li	a0,6
+  401178:	1004      	b	401182 <net_maintain_health_cancelable+0x62>
+  40117a:	1a00 061c 	jal	401870 <wifi_check_sta_is_configed@mips16plt>
+  40117e:	6500      	nop
+  401180:	2a02      	bnez	v0,401186 <net_maintain_health_cancelable+0x66>
+  401182:	6c05      	li	a0,5
+  401184:	17e7      	b	401154 <net_maintain_health_cancelable+0x34>
+  401186:	1a00 062c 	jal	4018b0 <wifi_check_ssids_is_ok@mips16plt>
+  40118a:	6500      	nop
+  40118c:	2a04      	bnez	v0,401196 <net_maintain_health_cancelable+0x76>
+  40118e:	6fe3      	li	a3,227
+  401190:	b668      	lw	a2,401330 <__pool_net_maintain_health_cancelable_178+0x8>
+  401192:	b56a      	lw	a1,401338 <__pool_net_maintain_health_cancelable_178+0x10>
+  401194:	17ee      	b	401172 <net_maintain_health_cancelable+0x52>
+  401196:	b56a      	lw	a1,40133c <__pool_net_maintain_health_cancelable_178+0x14>
+  401198:	1a00 0644 	jal	401910 <syslog@mips16plt>
+  40119c:	6c06      	li	a0,6
+  40119e:	6e04      	li	a2,4
+  4011a0:	b568      	lw	a1,401340 <__pool_net_maintain_health_cancelable_178+0x18>
+  4011a2:	1a00 0690 	jal	401a40 <memcpy@mips16plt>
+  4011a6:	6c00      	li	a0,0
+  4011a8:	1a00 065c 	jal	401970 <get_model_name@mips16plt>
+  4011ac:	6500      	nop
+  4011ae:	1a00 067c 	jal	4019f0 <wifi_check_sta_is_ok@mips16plt>
+  4011b2:	6702      	move	s0,v0
+  4011b4:	2259      	beqz	v0,401268 <net_maintain_health_cancelable+0x148>
+  4011b6:	b564      	lw	a1,401344 <__pool_net_maintain_health_cancelable_178+0x1c>
+  4011b8:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  4011bc:	6790      	move	a0,s0
+  4011be:	220a      	beqz	v0,4011d4 <net_maintain_health_cancelable+0xb4>
+  4011c0:	b562      	lw	a1,401348 <__pool_net_maintain_health_cancelable_178+0x20>
+  4011c2:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  4011c6:	6790      	move	a0,s0
+  4011c8:	2205      	beqz	v0,4011d4 <net_maintain_health_cancelable+0xb4>
+  4011ca:	b561      	lw	a1,40134c <__pool_net_maintain_health_cancelable_178+0x24>
+  4011cc:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  4011d0:	6790      	move	a0,s0
+  4011d2:	2abf      	bnez	v0,401152 <net_maintain_health_cancelable+0x32>
+  4011d4:	6e20      	li	a2,32
+  4011d6:	6d00      	li	a1,0
+  4011d8:	1a00 0628 	jal	4018a0 <memset@mips16plt>
+  4011dc:	0409      	addiu	a0,sp,36
+  4011de:	b45d      	lw	a0,401350 <__pool_net_maintain_health_cancelable_178+0x28>
+  4011e0:	1a00 0680 	jal	401a00 <cmm_get_ip_by_interface@mips16plt>
+  4011e4:	0509      	addiu	a1,sp,36
+  4011e6:	1a00 0694 	jal	401a50 <strlen@mips16plt>
+  4011ea:	0409      	addiu	a0,sp,36
+  4011ec:	5a07      	sltiu	v0,7
+  4011ee:	6120      	btnez	401230 <net_maintain_health_cancelable+0x110>
+  4011f0:	6e20      	li	a2,32
+  4011f2:	6d00      	li	a1,0
+  4011f4:	1a00 0628 	jal	4018a0 <memset@mips16plt>
+  4011f8:	0411      	addiu	a0,sp,68
+  4011fa:	6e40      	li	a2,64
+  4011fc:	6d00      	li	a1,0
+  4011fe:	1a00 0628 	jal	4018a0 <memset@mips16plt>
+  401202:	0419      	addiu	a0,sp,100
+  401204:	b454      	lw	a0,401354 <__pool_net_maintain_health_cancelable_178+0x2c>
+  401206:	1a00 0684 	jal	401a10 <getShellCommandReturn@mips16plt>
+  40120a:	0511      	addiu	a1,sp,68
+  40120c:	0202      	addiu	v0,sp,8
+  40120e:	f020 825c 	lb	v0,60(v0)
+  401212:	2208      	beqz	v0,401224 <net_maintain_health_cancelable+0x104>
+  401214:	0611      	addiu	a2,sp,68
+  401216:	b551      	lw	a1,401358 <__pool_net_maintain_health_cancelable_178+0x30>
+  401218:	1a00 068c 	jal	401a30 <sprintf@mips16plt>
+  40121c:	0419      	addiu	a0,sp,100
+  40121e:	1a00 0630 	jal	4018c0 <system@mips16plt>
+  401222:	0419      	addiu	a0,sp,100
+  401224:	1a00 0640 	jal	401900 <sleep@mips16plt>
+  401228:	6c3c      	li	a0,60
+  40122a:	6a00      	li	v0,0
+  40122c:	d207      	sw	v0,28(sp)
+  40122e:	1781      	b	401132 <net_maintain_health_cancelable+0x12>
+  401230:	9207      	lw	v0,28(sp)
+  401232:	4a01      	addiu	v0,1
+  401234:	5203      	slti	v0,3
+  401236:	d207      	sw	v0,28(sp)
+  401238:	611d      	btnez	401274 <net_maintain_health_cancelable+0x154>
+  40123a:	f400 6e00 	li	a2,1024
+  40123e:	6d00      	li	a1,0
+  401240:	1a00 0628 	jal	4018a0 <memset@mips16plt>
+  401244:	0419      	addiu	a0,sp,100
+  401246:	b446      	lw	a0,40135c <__pool_net_maintain_health_cancelable_178+0x34>
+  401248:	1a00 0684 	jal	401a10 <getShellCommandReturn@mips16plt>
+  40124c:	0519      	addiu	a1,sp,100
+  40124e:	0202      	addiu	v0,sp,8
+  401250:	f040 825c 	lb	v0,92(v0)
+  401254:	2204      	beqz	v0,40125e <net_maintain_health_cancelable+0x13e>
+  401256:	b443      	lw	a0,401360 <__pool_net_maintain_health_cancelable_178+0x38>
+  401258:	1a00 0630 	jal	4018c0 <system@mips16plt>
+  40125c:	6500      	nop
+  40125e:	1a00 0640 	jal	401900 <sleep@mips16plt>
+  401262:	6c1e      	li	a0,30
+  401264:	6900      	li	s1,0
+  401266:	17e1      	b	40122a <net_maintain_health_cancelable+0x10a>
+  401268:	4901      	addiu	s1,1
+  40126a:	5104      	slti	s1,4
+  40126c:	6002      	bteqz	401272 <net_maintain_health_cancelable+0x152>
+  40126e:	6c0a      	li	a0,10
+  401270:	1771      	b	401154 <net_maintain_health_cancelable+0x34>
+  401272:	6900      	li	s1,0
+  401274:	b534      	lw	a1,401344 <__pool_net_maintain_health_cancelable_178+0x1c>
+  401276:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  40127a:	6790      	move	a0,s0
+  40127c:	2218      	beqz	v0,4012ae <net_maintain_health_cancelable+0x18e>
+  40127e:	b533      	lw	a1,401348 <__pool_net_maintain_health_cancelable_178+0x20>
+  401280:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  401284:	6790      	move	a0,s0
+  401286:	2213      	beqz	v0,4012ae <net_maintain_health_cancelable+0x18e>
+  401288:	b531      	lw	a1,40134c <__pool_net_maintain_health_cancelable_178+0x24>
+  40128a:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  40128e:	6790      	move	a0,s0
+  401290:	220e      	beqz	v0,4012ae <net_maintain_health_cancelable+0x18e>
+  401292:	1a00 0674 	jal	4019d0 <wifi_check_sta_is_enable@mips16plt>
+  401296:	6500      	nop
+  401298:	2207      	beqz	v0,4012a8 <net_maintain_health_cancelable+0x188>
+  40129a:	1a00 064c 	jal	401930 <wifi_enable_sta_in_uci@mips16plt>
+  40129e:	6c00      	li	a0,0
+  4012a0:	b431      	lw	a0,401364 <__pool_net_maintain_health_cancelable_178+0x3c>
+  4012a2:	1a00 0664 	jal	401990 <execCommand@mips16plt>
+  4012a6:	6500      	nop
+  4012a8:	1a00 0640 	jal	401900 <sleep@mips16plt>
+  4012ac:	6c0a      	li	a0,10
+  4012ae:	1a00 0678 	jal	4019e0 <wifi_auto_reconnect_new@mips16plt>
+  4012b2:	6500      	nop
+  4012b4:	b524      	lw	a1,401344 <__pool_net_maintain_health_cancelable_178+0x1c>
+  4012b6:	6790      	move	a0,s0
+  4012b8:	2225      	beqz	v0,401304 <net_maintain_health_cancelable+0x1e4>
+  4012ba:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  4012be:	6500      	nop
+  4012c0:	f75f 221f 	beqz	v0,401182 <net_maintain_health_cancelable+0x62>
+  4012c4:	b521      	lw	a1,401348 <__pool_net_maintain_health_cancelable_178+0x20>
+  4012c6:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  4012ca:	6790      	move	a0,s0
+  4012cc:	f75f 2219 	beqz	v0,401182 <net_maintain_health_cancelable+0x62>
+  4012d0:	b51f      	lw	a1,40134c <__pool_net_maintain_health_cancelable_178+0x24>
+  4012d2:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  4012d6:	6790      	move	a0,s0
+  4012d8:	f75f 2213 	beqz	v0,401182 <net_maintain_health_cancelable+0x62>
+  4012dc:	1a00 0674 	jal	4019d0 <wifi_check_sta_is_enable@mips16plt>
+  4012e0:	6500      	nop
+  4012e2:	f75f 220e 	beqz	v0,401182 <net_maintain_health_cancelable+0x62>
+  4012e6:	1a00 064c 	jal	401930 <wifi_enable_sta_in_uci@mips16plt>
+  4012ea:	6c00      	li	a0,0
+  4012ec:	b41e      	lw	a0,401364 <__pool_net_maintain_health_cancelable_178+0x3c>
+  4012ee:	1a00 0664 	jal	401990 <execCommand@mips16plt>
+  4012f2:	6500      	nop
+  4012f4:	1a00 0640 	jal	401900 <sleep@mips16plt>
+  4012f8:	6c0f      	li	a0,15
+  4012fa:	6fff      	li	a3,255
+  4012fc:	4f2e      	addiu	a3,46
+  4012fe:	b60d      	lw	a2,401330 <__pool_net_maintain_health_cancelable_178+0x8>
+  401300:	b51a      	lw	a1,401368 <__pool_net_maintain_health_cancelable_178+0x40>
+  401302:	1737      	b	401172 <net_maintain_health_cancelable+0x52>
+  401304:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  401308:	6500      	nop
+  40130a:	220b      	beqz	v0,401322 <net_maintain_health_cancelable+0x202>
+  40130c:	b50f      	lw	a1,401348 <__pool_net_maintain_health_cancelable_178+0x20>
+  40130e:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  401312:	6790      	move	a0,s0
+  401314:	2206      	beqz	v0,401322 <net_maintain_health_cancelable+0x202>
+  401316:	b50e      	lw	a1,40134c <__pool_net_maintain_health_cancelable_178+0x24>
+  401318:	1a00 0624 	jal	401890 <strcmp@mips16plt>
+  40131c:	6790      	move	a0,s0
+  40131e:	f73f 2a10 	bnez	v0,401182 <net_maintain_health_cancelable+0x62>
+  401322:	6c0f      	li	a0,15
+  401324:	1717      	b	401154 <net_maintain_health_cancelable+0x34>
+  401326:	6500      	nop
+
+00401328 <__pool_net_maintain_health_cancelable_178>:
+  401328:	0041 2020 0040 16a8 0040 17e0 0040 16bc     .A  .@...@...@..
+  401338:	0040 16e4 0040 1710 0040 171c 0040 1720     .@...@...@...@. 
+  401348:	0040 172c 0040 1734 0040 173c 0040 1744     .@.,.@.4.@.<.@.D
+  401358:	0040 1788 0040 1794 0040 17b4 0040 1674     .@...@...@...@.t
+  401368:	0040 17c8                                   .@..
+
+0040136c <__pend_net_maintain_health_cancelable_178>:
+  40136c:	6500      	nop
+  40136e:	6500      	nop
+
+00401370 <__do_global_ctors_aux>:
+  401370:	27bdffd8 	addiu	sp,sp,-40
+  401374:	afb0001c 	sw	s0,28(sp)
+  401378:	3c100041 	lui	s0,0x41
+  40137c:	afb10020 	sw	s1,32(sp)
+  401380:	afbf0024 	sw	ra,36(sp)
+  401384:	26101f5c 	addiu	s0,s0,8028
+  401388:	2411ffff 	li	s1,-1
+  40138c:	8e190000 	lw	t9,0(s0)
+  401390:	17310005 	bne	t9,s1,4013a8 <__do_global_ctors_aux+0x38>
+  401394:	8fbf0024 	lw	ra,36(sp)
+  401398:	8fb10020 	lw	s1,32(sp)
+  40139c:	8fb0001c 	lw	s0,28(sp)
+  4013a0:	03e00008 	jr	ra
+  4013a4:	27bd0028 	addiu	sp,sp,40
+  4013a8:	0320f809 	jalr	t9
+  4013ac:	2610fffc 	addiu	s0,s0,-4
+  4013b0:	1000fff7 	b	401390 <__do_global_ctors_aux+0x20>
+  4013b4:	8e190000 	lw	t9,0(s0)
+	...
+
+Disassembly of section .fini:
+
+004013c0 <_fini>:
+  4013c0:	27bdffe0 	addiu	sp,sp,-32
+  4013c4:	afbc0018 	sw	gp,24(sp)
+  4013c8:	afbf001c 	sw	ra,28(sp)
+  4013cc:	04110001 	bal	4013d4 <_fini+0x14>
+  4013d0:	00000000 	nop
+  4013d4:	3c190040 	lui	t9,0x40
+  4013d8:	27390d20 	addiu	t9,t9,3360
+  4013dc:	0320f809 	jalr	t9
+  4013e0:	00000000 	nop
+  4013e4:	8fbc0018 	lw	gp,24(sp)
+  4013e8:	8fbf001c 	lw	ra,28(sp)
+  4013ec:	03e00008 	jr	ra
+  4013f0:	27bd0020 	addiu	sp,sp,32
+
+Disassembly of section .plt:
+
+00401820 <_PROCEDURE_LINKAGE_TABLE_>:
+  401820:	3c1c0041 	lui	gp,0x41
+  401824:	8f991f6c 	lw	t9,8044(gp)
+  401828:	279c1f6c 	addiu	gp,gp,8044
+  40182c:	031cc023 	subu	t8,t8,gp
+  401830:	03e07825 	move	t7,ra
+  401834:	0018c082 	srl	t8,t8,0x2
+  401838:	0320f809 	jalr	t9
+  40183c:	2718fffe 	addiu	t8,t8,-2
+
+00401840 <__register_frame_info@plt>:
+  401840:	3c0f0041 	lui	t7,0x41
+  401844:	8df91f9c 	lw	t9,8092(t7)
+  401848:	03200008 	jr	t9
+  40184c:	25f81f9c 	addiu	t8,t7,8092
+
+00401850 <__libc_start_main@plt>:
+  401850:	3c0f0041 	lui	t7,0x41
+  401854:	8df91fb8 	lw	t9,8120(t7)
+  401858:	03200008 	jr	t9
+  40185c:	25f81fb8 	addiu	t8,t7,8120
+
+00401860 <__deregister_frame_info@plt>:
+  401860:	3c0f0041 	lui	t7,0x41
+  401864:	8df91fd4 	lw	t9,8148(t7)
+  401868:	03200008 	jr	t9
+  40186c:	25f81fd4 	addiu	t8,t7,8148
+
+00401870 <wifi_check_sta_is_configed@mips16plt>:
+  401870:	b203      	lw	v0,40187c <wifi_check_sta_is_configed@mips16plt+0xc>
+  401872:	9a60      	lw	v1,0(v0)
+  401874:	651a      	move	t8,v0
+  401876:	eb00      	jr	v1
+  401878:	653b      	move	t9,v1
+  40187a:	6500      	nop
+  40187c:	0041 1f74 	.word	0x411f74
+
+00401880 <guci2_set@mips16plt>:
+  401880:	b203      	lw	v0,40188c <guci2_set@mips16plt+0xc>
+  401882:	9a60      	lw	v1,0(v0)
+  401884:	651a      	move	t8,v0
+  401886:	eb00      	jr	v1
+  401888:	653b      	move	t9,v1
+  40188a:	6500      	nop
+  40188c:	0041 1f78 	.word	0x411f78
+
+00401890 <strcmp@mips16plt>:
+  401890:	b203      	lw	v0,40189c <strcmp@mips16plt+0xc>
+  401892:	9a60      	lw	v1,0(v0)
+  401894:	651a      	move	t8,v0
+  401896:	eb00      	jr	v1
+  401898:	653b      	move	t9,v1
+  40189a:	6500      	nop
+  40189c:	0041 1f7c 	.word	0x411f7c
+
+004018a0 <memset@mips16plt>:
+  4018a0:	b203      	lw	v0,4018ac <memset@mips16plt+0xc>
+  4018a2:	9a60      	lw	v1,0(v0)
+  4018a4:	651a      	move	t8,v0
+  4018a6:	eb00      	jr	v1
+  4018a8:	653b      	move	t9,v1
+  4018aa:	6500      	nop
+  4018ac:	0041 1f80 	.word	0x411f80
+
+004018b0 <wifi_check_ssids_is_ok@mips16plt>:
+  4018b0:	b203      	lw	v0,4018bc <wifi_check_ssids_is_ok@mips16plt+0xc>
+  4018b2:	9a60      	lw	v1,0(v0)
+  4018b4:	651a      	move	t8,v0
+  4018b6:	eb00      	jr	v1
+  4018b8:	653b      	move	t9,v1
+  4018ba:	6500      	nop
+  4018bc:	0041 1f84 	.word	0x411f84
+
+004018c0 <system@mips16plt>:
+  4018c0:	b203      	lw	v0,4018cc <system@mips16plt+0xc>
+  4018c2:	9a60      	lw	v1,0(v0)
+  4018c4:	651a      	move	t8,v0
+  4018c6:	eb00      	jr	v1
+  4018c8:	653b      	move	t9,v1
+  4018ca:	6500      	nop
+  4018cc:	0041 1f88 	.word	0x411f88
+
+004018d0 <wifi_check_ap_is_ok@mips16plt>:
+  4018d0:	b203      	lw	v0,4018dc <wifi_check_ap_is_ok@mips16plt+0xc>
+  4018d2:	9a60      	lw	v1,0(v0)
+  4018d4:	651a      	move	t8,v0
+  4018d6:	eb00      	jr	v1
+  4018d8:	653b      	move	t9,v1
+  4018da:	6500      	nop
+  4018dc:	0041 1f8c 	.word	0x411f8c
+
+004018e0 <guci2_commit@mips16plt>:
+  4018e0:	b203      	lw	v0,4018ec <guci2_commit@mips16plt+0xc>
+  4018e2:	9a60      	lw	v1,0(v0)
+  4018e4:	651a      	move	t8,v0
+  4018e6:	eb00      	jr	v1
+  4018e8:	653b      	move	t9,v1
+  4018ea:	6500      	nop
+  4018ec:	0041 1f90 	.word	0x411f90
+
+004018f0 <wifi_check_wpa_is_running@mips16plt>:
+  4018f0:	b203      	lw	v0,4018fc <wifi_check_wpa_is_running@mips16plt+0xc>
+  4018f2:	9a60      	lw	v1,0(v0)
+  4018f4:	651a      	move	t8,v0
+  4018f6:	eb00      	jr	v1
+  4018f8:	653b      	move	t9,v1
+  4018fa:	6500      	nop
+  4018fc:	0041 1f94 	.word	0x411f94
+
+00401900 <sleep@mips16plt>:
+  401900:	b203      	lw	v0,40190c <sleep@mips16plt+0xc>
+  401902:	9a60      	lw	v1,0(v0)
+  401904:	651a      	move	t8,v0
+  401906:	eb00      	jr	v1
+  401908:	653b      	move	t9,v1
+  40190a:	6500      	nop
+  40190c:	0041 1f98 	.word	0x411f98
+
+00401910 <syslog@mips16plt>:
+  401910:	b203      	lw	v0,40191c <syslog@mips16plt+0xc>
+  401912:	9a60      	lw	v1,0(v0)
+  401914:	651a      	move	t8,v0
+  401916:	eb00      	jr	v1
+  401918:	653b      	move	t9,v1
+  40191a:	6500      	nop
+  40191c:	0041 1fa0 	.word	0x411fa0
+
+00401920 <cmm_check_file_is_exist@mips16plt>:
+  401920:	b203      	lw	v0,40192c <cmm_check_file_is_exist@mips16plt+0xc>
+  401922:	9a60      	lw	v1,0(v0)
+  401924:	651a      	move	t8,v0
+  401926:	eb00      	jr	v1
+  401928:	653b      	move	t9,v1
+  40192a:	6500      	nop
+  40192c:	0041 1fa4 	.word	0x411fa4
+
+00401930 <wifi_enable_sta_in_uci@mips16plt>:
+  401930:	b203      	lw	v0,40193c <wifi_enable_sta_in_uci@mips16plt+0xc>
+  401932:	9a60      	lw	v1,0(v0)
+  401934:	651a      	move	t8,v0
+  401936:	eb00      	jr	v1
+  401938:	653b      	move	t9,v1
+  40193a:	6500      	nop
+  40193c:	0041 1fa8 	.word	0x411fa8
+
+00401940 <getUciReturn@mips16plt>:
+  401940:	b203      	lw	v0,40194c <getUciReturn@mips16plt+0xc>
+  401942:	9a60      	lw	v1,0(v0)
+  401944:	651a      	move	t8,v0
+  401946:	eb00      	jr	v1
+  401948:	653b      	move	t9,v1
+  40194a:	6500      	nop
+  40194c:	0041 1fac 	.word	0x411fac
+
+00401950 <strncasecmp@mips16plt>:
+  401950:	b203      	lw	v0,40195c <strncasecmp@mips16plt+0xc>
+  401952:	9a60      	lw	v1,0(v0)
+  401954:	651a      	move	t8,v0
+  401956:	eb00      	jr	v1
+  401958:	653b      	move	t9,v1
+  40195a:	6500      	nop
+  40195c:	0041 1fb0 	.word	0x411fb0
+
+00401960 <wifi_check_is_auto_repeater@mips16plt>:
+  401960:	b203      	lw	v0,40196c <wifi_check_is_auto_repeater@mips16plt+0xc>
+  401962:	9a60      	lw	v1,0(v0)
+  401964:	651a      	move	t8,v0
+  401966:	eb00      	jr	v1
+  401968:	653b      	move	t9,v1
+  40196a:	6500      	nop
+  40196c:	0041 1fb4 	.word	0x411fb4
+
+00401970 <get_model_name@mips16plt>:
+  401970:	b203      	lw	v0,40197c <get_model_name@mips16plt+0xc>
+  401972:	9a60      	lw	v1,0(v0)
+  401974:	651a      	move	t8,v0
+  401976:	eb00      	jr	v1
+  401978:	653b      	move	t9,v1
+  40197a:	6500      	nop
+  40197c:	0041 1fbc 	.word	0x411fbc
+
+00401980 <exit@mips16plt>:
+  401980:	b203      	lw	v0,40198c <exit@mips16plt+0xc>
+  401982:	9a60      	lw	v1,0(v0)
+  401984:	651a      	move	t8,v0
+  401986:	eb00      	jr	v1
+  401988:	653b      	move	t9,v1
+  40198a:	6500      	nop
+  40198c:	0041 1fc0 	.word	0x411fc0
+
+00401990 <execCommand@mips16plt>:
+  401990:	b203      	lw	v0,40199c <execCommand@mips16plt+0xc>
+  401992:	9a60      	lw	v1,0(v0)
+  401994:	651a      	move	t8,v0
+  401996:	eb00      	jr	v1
+  401998:	653b      	move	t9,v1
+  40199a:	6500      	nop
+  40199c:	0041 1fc4 	.word	0x411fc4
+
+004019a0 <getShellCommandReturnLine@mips16plt>:
+  4019a0:	b203      	lw	v0,4019ac <getShellCommandReturnLine@mips16plt+0xc>
+  4019a2:	9a60      	lw	v1,0(v0)
+  4019a4:	651a      	move	t8,v0
+  4019a6:	eb00      	jr	v1
+  4019a8:	653b      	move	t9,v1
+  4019aa:	6500      	nop
+  4019ac:	0041 1fc8 	.word	0x411fc8
+
+004019b0 <guci2_free@mips16plt>:
+  4019b0:	b203      	lw	v0,4019bc <guci2_free@mips16plt+0xc>
+  4019b2:	9a60      	lw	v1,0(v0)
+  4019b4:	651a      	move	t8,v0
+  4019b6:	eb00      	jr	v1
+  4019b8:	653b      	move	t9,v1
+  4019ba:	6500      	nop
+  4019bc:	0041 1fcc 	.word	0x411fcc
+
+004019c0 <guci2_init@mips16plt>:
+  4019c0:	b203      	lw	v0,4019cc <guci2_init@mips16plt+0xc>
+  4019c2:	9a60      	lw	v1,0(v0)
+  4019c4:	651a      	move	t8,v0
+  4019c6:	eb00      	jr	v1
+  4019c8:	653b      	move	t9,v1
+  4019ca:	6500      	nop
+  4019cc:	0041 1fd0 	.word	0x411fd0
+
+004019d0 <wifi_check_sta_is_enable@mips16plt>:
+  4019d0:	b203      	lw	v0,4019dc <wifi_check_sta_is_enable@mips16plt+0xc>
+  4019d2:	9a60      	lw	v1,0(v0)
+  4019d4:	651a      	move	t8,v0
+  4019d6:	eb00      	jr	v1
+  4019d8:	653b      	move	t9,v1
+  4019da:	6500      	nop
+  4019dc:	0041 1fd8 	.word	0x411fd8
+
+004019e0 <wifi_auto_reconnect_new@mips16plt>:
+  4019e0:	b203      	lw	v0,4019ec <wifi_auto_reconnect_new@mips16plt+0xc>
+  4019e2:	9a60      	lw	v1,0(v0)
+  4019e4:	651a      	move	t8,v0
+  4019e6:	eb00      	jr	v1
+  4019e8:	653b      	move	t9,v1
+  4019ea:	6500      	nop
+  4019ec:	0041 1fdc 	.word	0x411fdc
+
+004019f0 <wifi_check_sta_is_ok@mips16plt>:
+  4019f0:	b203      	lw	v0,4019fc <wifi_check_sta_is_ok@mips16plt+0xc>
+  4019f2:	9a60      	lw	v1,0(v0)
+  4019f4:	651a      	move	t8,v0
+  4019f6:	eb00      	jr	v1
+  4019f8:	653b      	move	t9,v1
+  4019fa:	6500      	nop
+  4019fc:	0041 1fe0 	.word	0x411fe0
+
+00401a00 <cmm_get_ip_by_interface@mips16plt>:
+  401a00:	b203      	lw	v0,401a0c <cmm_get_ip_by_interface@mips16plt+0xc>
+  401a02:	9a60      	lw	v1,0(v0)
+  401a04:	651a      	move	t8,v0
+  401a06:	eb00      	jr	v1
+  401a08:	653b      	move	t9,v1
+  401a0a:	6500      	nop
+  401a0c:	0041 1fe4 	.word	0x411fe4
+
+00401a10 <getShellCommandReturn@mips16plt>:
+  401a10:	b203      	lw	v0,401a1c <getShellCommandReturn@mips16plt+0xc>
+  401a12:	9a60      	lw	v1,0(v0)
+  401a14:	651a      	move	t8,v0
+  401a16:	eb00      	jr	v1
+  401a18:	653b      	move	t9,v1
+  401a1a:	6500      	nop
+  401a1c:	0041 1fe8 	.word	0x411fe8
+
+00401a20 <guci2_get@mips16plt>:
+  401a20:	b203      	lw	v0,401a2c <guci2_get@mips16plt+0xc>
+  401a22:	9a60      	lw	v1,0(v0)
+  401a24:	651a      	move	t8,v0
+  401a26:	eb00      	jr	v1
+  401a28:	653b      	move	t9,v1
+  401a2a:	6500      	nop
+  401a2c:	0041 1fec 	.word	0x411fec
+
+00401a30 <sprintf@mips16plt>:
+  401a30:	b203      	lw	v0,401a3c <sprintf@mips16plt+0xc>
+  401a32:	9a60      	lw	v1,0(v0)
+  401a34:	651a      	move	t8,v0
+  401a36:	eb00      	jr	v1
+  401a38:	653b      	move	t9,v1
+  401a3a:	6500      	nop
+  401a3c:	0041 1ff0 	.word	0x411ff0
+
+00401a40 <memcpy@mips16plt>:
+  401a40:	b203      	lw	v0,401a4c <memcpy@mips16plt+0xc>
+  401a42:	9a60      	lw	v1,0(v0)
+  401a44:	651a      	move	t8,v0
+  401a46:	eb00      	jr	v1
+  401a48:	653b      	move	t9,v1
+  401a4a:	6500      	nop
+  401a4c:	0041 1ff4 	.word	0x411ff4
+
+00401a50 <strlen@mips16plt>:
+  401a50:	b203      	lw	v0,401a5c <strlen@mips16plt+0xc>
+  401a52:	9a60      	lw	v1,0(v0)
+  401a54:	651a      	move	t8,v0
+  401a56:	eb00      	jr	v1
+  401a58:	653b      	move	t9,v1
+  401a5a:	6500      	nop
+  401a5c:	0041 1ff8 	.word	0x411ff8
+
+00401a60 <__stack_chk_fail@mips16plt>:
+  401a60:	b203      	lw	v0,401a6c <__stack_chk_fail@mips16plt+0xc>
+  401a62:	9a60      	lw	v1,0(v0)
+  401a64:	651a      	move	t8,v0
+  401a66:	eb00      	jr	v1
+  401a68:	653b      	move	t9,v1
+  401a6a:	6500      	nop
+  401a6c:	0041 1ffc 	.word	0x411ffc
