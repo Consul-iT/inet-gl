@@ -145,4 +145,18 @@ menu "GL.iNet packages choice shortcut"
  	config GLINET_RTC
  		bool "Support rtc"
  		select RTC_SUPPORT
+
+	config GLINET_DLNA
+ 		bool "Support dlna"
+ 		select PACKAGE_libjpeg
+		select PACKAGE_libogg
+		select PACKAGE_libexif
+		select PACKAGE_libflac
+		select PACKAGE_libvorbis
+		select PACKAGE_libbz2
+		select PACKAGE_libffmpeg-mini
+		select PACKAGE_libid3tag
+		select PACKAGE_minidlna
+		help
+		  Choose packages to support DLNA. 
 endmenu
