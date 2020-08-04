@@ -31,25 +31,23 @@
 		compatible = "gpio-leds";
 
 		wan {
-			label = "gl-xe300:white:wan";
+			label = "gl-xe300:green:wan";
 			gpios = <&gpio 1 GPIO_ACTIVE_LOW>;
-			linux,default-trigger = "eth1";
 		};
 
 		lan {
-			label = "gl-xe300:white:power";
+			label = "gl-xe300:green:lan";
 			gpios = <&gpio 10 GPIO_ACTIVE_LOW>;
-			linux,default-trigger = "eth0";
 		};
 
 		wlan {
-			label = "gl-xe300:white:wlan";
+			label = "gl-xe300:green:wlan";
 			gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "phy0tpt";
 		};
 
 		lte {
-			label = "gl-xe300:white:lte";
+			label = "gl-xe300:green:lte";
 			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
 		 };
 	};

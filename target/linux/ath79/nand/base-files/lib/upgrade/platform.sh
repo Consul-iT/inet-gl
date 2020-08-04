@@ -2,7 +2,7 @@
 
 PART_NAME=firmware
 
-REQUIRE_IMAGE_METADATA=1
+REQUIRE_IMAGE_METADATA=0
 platform_check_image() {
 	return 0
 }
@@ -22,6 +22,12 @@ platform_do_upgrade() {
 	glinet,gl-ar750s-nor-nand)
 		nand_nor_do_upgrade "$1"
 		;;
+        glinet,gl-xe300)
+                if type glinet_led_indicator;then
+                        glinet_led_indicator gl-xe300:green:wan gl-xe300:green:lan gl-xe300:green:wlan gl-xe300:green:lte &
+                fi                  
+                nand_do_upgrade "$1"
+                ;;
 	*)
 		nand_do_upgrade "$1"
 		;;

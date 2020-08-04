@@ -3,6 +3,18 @@
 # Copyright (C) 2019 Jeff Kletsky
 #
 
+glinet_led_indicator()          
+{                                                                    
+        while true;do                                                             
+                for i in 1 0;do                                                   
+                        for led in $@;do                                          
+                                echo $i > /sys/class/leds/$led/brightness;
+                                sleep 0.1;
+                        done
+                done
+        done                 
+}
+
 glinet_using_boot_dev_switch() {
 	if [ "$(fw_printenv -n boot_dev 2>/dev/null)" = "on" ] ; then
 		>&2 echo "NOTE: boot_dev=on; use switch to control boot partition"

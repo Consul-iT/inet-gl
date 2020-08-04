@@ -12,6 +12,10 @@ glinet,gl-ar300m-nand|\
 glinet,gl-ar300m-nor)
 	ucidef_set_led_netdev "lan" "LAN" "gl-ar300m:green:lan" "eth0"
 	;;
+glinet,gl-xe300)
+	ucidef_set_led_netdev "lan" "LAN" "gl-xe300:green:lan" "eth0"
+	ucidef_set_led_netdev "wan" "WAN" "gl-xe300:green:wan" "eth1"
+	;;
 netgear,wndr3700-v4|\
 netgear,wndr4300|\
 netgear,wndr4300sw|\

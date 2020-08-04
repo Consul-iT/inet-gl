@@ -29,3 +29,9 @@ git-src
 .project
 .cproject
 .ccache
+gl-*
+gl_*
+/gli
+package/gli-pri/
+package/gli-pri
+package/qca/
