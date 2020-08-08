@@ -13,7 +13,7 @@ glinet,gl-ar300m-nor)
 	ucidef_set_led_netdev "lan" "LAN" "gl-ar300m:green:lan" "eth0"
 	;;
 glinet,gl-xe300)
-	ucidef_set_led_netdev "lan" "LAN" "gl-xe300:green:lan" "eth0"
+	ucidef_set_led_switch "lan" "LAN" "gl-xe300:green:lan" "switch0" "0x10"
 	ucidef_set_led_netdev "wan" "WAN" "gl-xe300:green:wan" "eth1"
 	ucidef_set_led_netdev "3gnet" "LTE" "gl-xe300:green:lte" "wwan0"
 	;;
