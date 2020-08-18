@@ -1,0 +1,40 @@
+Index: b/drivers/tty/serial/8250/8250_port.c
+===================================================================
+--- a/drivers/tty/serial/8250/8250_port.c	2019-10-29 16:15:27.000000000 +0800
++++ b/drivers/tty/serial/8250/8250_port.c	2020-07-03 11:46:55.000000000 +0800
+@@ -38,6 +38,7 @@
+ #include <linux/uaccess.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/timer.h>
++#include <linux/gpio/consumer.h>
+ 
+ #include <asm/io.h>
+ #include <asm/irq.h>
+@@ -1451,12 +1452,18 @@ static void __stop_tx_rs485(struct uart_
+ 	}
+ }
+ 
++static unsigned int serial8250_tx_empty(struct uart_port *port);
+ static inline void __do_stop_tx(struct uart_8250_port *p)
+ {
+ 	if (p->ier & UART_IER_THRI) {
+ 		p->ier &= ~UART_IER_THRI;
+ 		serial_out(p, UART_IER, p->ier);
+ 		serial8250_rpm_put_tx(p);
++                while(!serial8250_tx_empty(&(p->port))){
++
++                        ;
++                }
++                gpiod_set_value(gpio_to_desc(1),0);
+ 	}
+ }
+ 
+@@ -1503,6 +1510,8 @@ static void serial8250_stop_tx(struct ua
+ static inline void __start_tx(struct uart_port *port)
+ {
+ 	struct uart_8250_port *up = up_to_u8250p(port);
++	
++	gpiod_set_value(gpio_to_desc(1),1);
+ 
+ 	if (up->dma && !up->dma->tx_dma(up))
+ 		return;

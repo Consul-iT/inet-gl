@@ -7,13 +7,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libiwinfo
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL=$(PROJECT_GIT)/project/iwinfo.git
-PKG_SOURCE_DATE:=2018-07-31
-PKG_SOURCE_VERSION:=65b8333f5b66f8812c1ed21a4d5b28a576e6ba63
-PKG_MIRROR_HASH:=78574c9f3da286ce2d896855e67193e88a5829fff8616ab093987ea3761c33c3
+PKG_SOURCE_DATE:=2018-07-24
+PKG_SOURCE_VERSION:=94b1366de313c4d1c0c1ea8f0b859bc44d0b231a
+PKG_MIRROR_HASH:=6fe4b76b24b9df0ced458d821df1f84818ca1647ae4d3c4439f486b5d35c986e
 PKG_MAINTAINER:=Jo-Philipp Wich <jo@mein.io>
 PKG_LICENSE:=GPL-2.0
 
@@ -75,7 +75,8 @@ IWINFO_BACKENDS := \
 	$(if $(CONFIG_PACKAGE_kmod-brcm-wl),wl) \
 	$(if $(CONFIG_PACKAGE_kmod-brcm-wl-mini),wl) \
 	$(if $(CONFIG_PACKAGE_kmod-brcm-wl-mimo),wl) \
-	$(if $(CONFIG_PACKAGE_kmod-cfg80211),nl80211)
+	$(if $(CONFIG_PACKAGE_kmod-cfg80211),nl80211) \
+	$(if $(CONFIG_PACKAGE_kmod-mt7628),rt)
 
 TARGET_CFLAGS += \
 	-I$(STAGING_DIR)/usr/include/libnl-tiny \
