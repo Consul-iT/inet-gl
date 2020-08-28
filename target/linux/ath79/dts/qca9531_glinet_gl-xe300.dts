@@ -67,6 +67,22 @@
 			gpios = <&gpio 17 GPIO_ACTIVE_LOW>;
 		};
 	 };
+
+	i2c: i2c {
+		compatible = "i2c-gpio";
+
+		sda-gpios = <&gpio 14 (GPIO_ACTIVE_HIGH|GPIO_OPEN_DRAIN)>;
+		scl-gpios = <&gpio 16 (GPIO_ACTIVE_HIGH|GPIO_OPEN_DRAIN)>;
+
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		rtc@32 {
+                        compatible = "rtc-sd2068";
+                        reg = <0x32>;
+		};
+
+	};
 };
 
 &uart {
