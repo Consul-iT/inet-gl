@@ -462,6 +462,29 @@ define Device/glinet_gl-s1300
 endef
 TARGET_DEVICES += glinet_gl-s1300
 
+define Build/sdcard-img-ext4
+	SIGNATURE="$(IMG_PART_SIGNATURE)" \
+	./gen_mvebu_sdcard_img.sh $@ \
+		83 16 $(IMAGE_KERNEL) \
+		83 512 $(IMAGE_ROOTFS)
+endef
+
+#define Build/pad-kernel
+#	dd if=$(IMAGE_KERNEL) of=$(IMAGE_KERNEL).padded bs=16M count=1 conv=sync
+#endef
+
+define Device/glinet_gl-s1300-emmc
+  $(call Device/FitImage)
+  DEVICE_VENDOR := GL.iNet
+  DEVICE_MODEL := GL-S1300-EMMC
+  SOC := qcom-ipq4029
+  IMAGES := sdcard.img.gz
+  IMAGE/sdcard.img.gz := sdcard-img-ext4 | gzip | append-metadata
+  KERNEL_NAME := Image
+  DEVICE_PACKAGES := ipq-wifi-glinet_gl-s1300 kmod-fs-ext4 kmod-mmc kmod-spi-dev mkf2fs e2fsprogs kmod-fs-f2fs
+endef
+TARGET_DEVICES += glinet_gl-s1300-emmc
+
 define Device/linksys_ea6350v3
 	# The Linksys EA6350v3 has a uboot bootloader that does not
 	# support either booting lzma kernel images nor booting UBI

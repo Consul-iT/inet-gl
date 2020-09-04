@@ -25,6 +25,9 @@ Once this is done. Retry.
 EOF
 		return 1
 		;;
+	glinet,gl-s1300-emmc)
+		platform_check_image_sdcard "$1"
+		;;
 	esac
 	return 0;
 }
@@ -114,8 +117,20 @@ platform_do_upgrade() {
 	zyxel,nbg6617)
 		zyxel_do_upgrade "$1"
 		;;
+	glinet,gl-s1300-emmc)
+		platform_do_upgrade_sdcard "$1"
+		;;
 	*)
 		default_do_upgrade "$1"
+		;;
+	esac
+}
+
+
+platform_copy_config() {
+	case "$(board_name)" in
+	glinet,gl-s1300-emmc)
+		platform_copy_config_sdcard
 		;;
 	esac
 }
