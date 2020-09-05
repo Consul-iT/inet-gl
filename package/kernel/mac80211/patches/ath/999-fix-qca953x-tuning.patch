@@ -1,0 +1,22 @@
+--- a/drivers/net/wireless/ath/ath9k/ar9003_eeprom.c
++++ b/drivers/net/wireless/ath/ath9k/ar9003_eeprom.c
+@@ -4049,7 +4049,7 @@ static void ar9003_hw_apply_tuning_caps(
+ 	struct ar9300_eeprom *eep = &ah->eeprom.ar9300_eep;
+ 	u8 tuning_caps_param = eep->baseEepHeader.params_for_tuning_caps[0];
+ 
+-	if (AR_SREV_9340(ah) || AR_SREV_9531(ah))
++	if (AR_SREV_9340(ah))
+ 		return;
+ 
+ 	if (eep->baseEepHeader.featureEnable & 0x40) {
+--- a/drivers/net/wireless/ath/ath9k/ar9003_phy.h
++++ b/drivers/net/wireless/ath/ath9k/ar9003_phy.h
+@@ -724,7 +724,7 @@
+ 
+ #define AR_CH0_XTAL		(AR_SREV_9300(ah) ? 0x16294 : \
+ 				 ((AR_SREV_9462(ah) || AR_SREV_9565(ah)) ? 0x16298 : \
+-				  (AR_SREV_9561(ah) ? 0x162c0 : 0x16290)))
++				  ((AR_SREV_9561(ah) || AR_SREV_9531(ah)) ? 0x162c0 : 0x16290)))
+ #define AR_CH0_XTAL_CAPINDAC	0x7f000000
+ #define AR_CH0_XTAL_CAPINDAC_S	24
+ #define AR_CH0_XTAL_CAPOUTDAC	0x00fe0000
