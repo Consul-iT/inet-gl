@@ -2,9 +2,10 @@
 
 PART_NAME=firmware
 
-REQUIRE_IMAGE_METADATA=0
+REQUIRE_IMAGE_METADATA=1
 platform_check_image() {
-	return 0
+	fwtool_check_image $1
+	return $?
 }
 
 RAMFS_COPY_BIN='fw_printenv fw_setenv nandwrite'
