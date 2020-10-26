@@ -179,7 +179,7 @@ ar71xx_setup_interfaces()
 		ucidef_set_interfaces_lan_wan "eth1" "eth0"
 		;;
 	gl-x300b)
-		ucidef_set_interfaces_lan_wan "eth0" "eth1"
+		ucidef_set_interfaces_lan_wan "eth1" "eth0"
 		;;
 	gl-ar750s)
 		ucidef_add_switch "switch0" \

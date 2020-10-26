@@ -30,3 +30,4 @@
 -
  	spi_message_init(&m);
  	memset(t, 0, (sizeof t));
+ 

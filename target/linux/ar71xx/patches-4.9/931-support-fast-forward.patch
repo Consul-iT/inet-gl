@@ -1,8 +1,8 @@
 --- a/include/linux/skbuff.h
 +++ b/include/linux/skbuff.h
-@@ -738,6 +738,7 @@ struct sk_buff {
- #endif
+@@ -743,6 +743,7 @@ struct sk_buff {
  	__u8			ipvs_property:1;
+ 
  	__u8			inner_protocol_type:1;
 +	__u8			fast_forwarded:1;
  	__u8			remcsum_offload:1;
@@ -10,7 +10,7 @@
  	__u8			offload_fwd_mark:1;
 --- a/net/core/dev.c
 +++ b/net/core/dev.c
-@@ -2947,8 +2947,14 @@ static int xmit_one(struct sk_buff *skb,
+@@ -2969,8 +2969,14 @@ static int xmit_one(struct sk_buff *skb,
  	unsigned int len;
  	int rc;
  
@@ -27,7 +27,7 @@
  
  #ifdef CONFIG_ETHERNET_PACKET_MANGLE
  	if (!dev->eth_mangle_tx ||
-@@ -4137,6 +4143,9 @@ static inline int nf_ingress(struct sk_b
+@@ -4159,6 +4165,9 @@ static inline int nf_ingress(struct sk_b
  	return 0;
  }
  
@@ -37,7 +37,7 @@
  static int __netif_receive_skb_core(struct sk_buff *skb, bool pfmemalloc)
  {
  	struct packet_type *ptype, *pt_prev;
-@@ -4146,6 +4155,8 @@ static int __netif_receive_skb_core(stru
+@@ -4168,6 +4177,8 @@ static int __netif_receive_skb_core(stru
  	int ret = NET_RX_DROP;
  	__be16 type;
  
@@ -46,7 +46,7 @@
  	net_timestamp_check(!netdev_tstamp_prequeue, skb);
  
  	trace_netif_receive_skb(skb);
-@@ -4171,6 +4182,12 @@ another_round:
+@@ -4193,6 +4204,12 @@ another_round:
  			goto out;
  	}
  
@@ -71,7 +71,7 @@
      be liberal in what you accept from others."
 --- a/net/bridge/br_if.c
 +++ b/net/bridge/br_if.c
-@@ -655,3 +655,26 @@ void br_port_flags_change(struct net_bri
+@@ -654,3 +654,26 @@ void br_port_flags_change(struct net_bri
  	if (mask & BR_AUTO_MASK)
  		nbp_update_port_count(br);
  }

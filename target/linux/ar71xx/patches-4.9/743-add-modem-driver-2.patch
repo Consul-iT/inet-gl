@@ -1,7 +1,5 @@
-Index: b/drivers/usb/serial/option.c
-===================================================================
---- a/drivers/usb/serial/option.c	2020-07-15 10:07:29.000000000 +0800
-+++ b/drivers/usb/serial/option.c	2020-07-15 10:08:30.000000000 +0800
+--- a/drivers/usb/serial/option.c
++++ b/drivers/usb/serial/option.c
 @@ -593,6 +593,8 @@ static const struct usb_device_id option
  	{ USB_DEVICE(0x2C7C, 0x0195) }, /* Quectel EG95 */
  	{ USB_DEVICE(0x2C7C, 0x0306) }, /* Quectel EG06/EP06/EM06 */

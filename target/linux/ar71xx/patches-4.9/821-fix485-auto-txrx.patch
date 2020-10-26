@@ -1,7 +1,5 @@
-Index: b/drivers/tty/serial/8250/8250_port.c
-===================================================================
---- a/drivers/tty/serial/8250/8250_port.c	2019-10-29 16:15:27.000000000 +0800
-+++ b/drivers/tty/serial/8250/8250_port.c	2020-07-03 11:46:55.000000000 +0800
+--- a/drivers/tty/serial/8250/8250_port.c
++++ b/drivers/tty/serial/8250/8250_port.c
 @@ -38,6 +38,7 @@
  #include <linux/uaccess.h>
  #include <linux/pm_runtime.h>

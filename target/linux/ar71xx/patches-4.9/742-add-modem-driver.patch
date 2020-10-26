@@ -76,7 +76,7 @@
  	/* 1. CDC ECM like devices match on the control interface */
  	{	/* Huawei E392, E398 and possibly others sharing both device id and more... */
  		USB_VENDOR_AND_INTERFACE_INFO(HUAWEI_VENDOR_ID, USB_CLASS_VENDOR_SPEC, 1, 9),
-@@ -985,7 +1031,6 @@ static const struct usb_device_id produc
+@@ -989,7 +1035,6 @@ static const struct usb_device_id produc
  	{QMI_GOBI_DEVICE(0x05c6, 0x9225)},	/* Sony Gobi 2000 Modem device (N0279, VU730) */
  	{QMI_GOBI_DEVICE(0x05c6, 0x9245)},	/* Samsung Gobi 2000 Modem device (VL176) */
  	{QMI_GOBI_DEVICE(0x03f0, 0x251d)},	/* HP Gobi 2000 Modem device (VP412) */
@@ -86,7 +86,7 @@
  	{QMI_GOBI_DEVICE(0x05c6, 0x9235)},	/* Top Global Gobi 2000 Modem device (VR306) */
 --- a/drivers/usb/serial/option.c
 +++ b/drivers/usb/serial/option.c
-@@ -553,6 +553,22 @@ static void option_instat_callback(struc
+@@ -556,6 +556,22 @@ static void option_instat_callback(struc
  #define WETELECOM_PRODUCT_6802			0x6802
  #define WETELECOM_PRODUCT_WMD300		0x6803
  
@@ -109,7 +109,7 @@
  
  /* Device flags */
  
-@@ -564,6 +580,24 @@ static void option_instat_callback(struc
+@@ -567,6 +583,24 @@ static void option_instat_callback(struc
  
  
  static const struct usb_device_id option_ids[] = {
@@ -134,7 +134,7 @@
  	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_COLT) },
  	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_RICOLA) },
  	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_RICOLA_LIGHT) },
-@@ -1972,6 +2006,9 @@ static struct usb_serial_driver option_1
+@@ -2027,6 +2061,9 @@ static struct usb_serial_driver option_1
  #ifdef CONFIG_PM
  	.suspend           = usb_wwan_suspend,
  	.resume            = usb_wwan_resume,
@@ -144,7 +144,7 @@
  #endif
  };
  
-@@ -2005,12 +2042,67 @@ static int option_probe(struct usb_seria
+@@ -2060,12 +2097,67 @@ static int option_probe(struct usb_seria
  	 * a separate module.
  	 */
  	if (dev_desc->idVendor == cpu_to_le16(SAMSUNG_VENDOR_ID) &&

@@ -413,7 +413,7 @@ gl-ar300m)
 	;;
 gl-x300b)
         ucidef_set_led_netdev "wlan2g" "WLAN2G" "$board:green:wlan2g" "wlan0"
-        ucidef_set_led_netdev "wan"    "WAN"    "$board:green:wan"    "eth1"
+        ucidef_set_led_netdev "wan"    "WAN"    "$board:green:wan"    "eth0"
         ucidef_set_led_netdev "3gnet"  "3GNET"  "$board:green:4g"     "3g-wan"
 	;;
 gl-ar750s|\
