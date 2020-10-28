@@ -55,6 +55,7 @@ case "$FIRMWARE" in
 	ezviz,cs-w3-wd1200g-eup |\
 	glinet,gl-b1300 |\
 	glinet,gl-s1300 |\
+	glinet,gl-s1300-emmc |\
 	linksys,ea6350v3 |\
 	mobipromo,cm520-79f |\
 	qcom,ap-dk01.1-c1)
@@ -148,6 +149,7 @@ case "$FIRMWARE" in
 	ezviz,cs-w3-wd1200g-eup |\
 	glinet,gl-b1300 |\
 	glinet,gl-s1300 |\
+	glinet,gl-s1300-emmc |\
 	linksys,ea6350v3 |\
 	mobipromo,cm520-79f |\
 	qcom,ap-dk01.1-c1)
