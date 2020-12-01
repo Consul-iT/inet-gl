@@ -108,6 +108,7 @@ CONFIG_AUDIO_SUPPORT=y
 CONFIG_GPIO_SUPPORT=y
 CONFIG_PCI_SUPPORT=y
 CONFIG_USB_SUPPORT=y
+CONFIG_RTC_SUPPORT=y
 CONFIG_BIG_ENDIAN=y
 CONFIG_USES_DEVICETREE=y
 CONFIG_USES_INITRAMFS=y
@@ -349,21 +350,21 @@ CONFIG_EXTRA_OPTIMIZATION="-fno-caller-saves -fno-plt"
 #
 # GL.iNet packages choice shortcut
 #
-# CONFIG_GLINET_BASIC_PACKAGES is not set
+CONFIG_GLINET_BASIC_PACKAGES=y
 
 #
 # Select VPN
 #
-# CONFIG_GLINET_OPENVPN is not set
-# CONFIG_GLINET_WIREGUARD is not set
+CONFIG_GLINET_OPENVPN=y
+CONFIG_GLINET_WIREGUARD=y
 # CONFIG_GLINET_SHADOWSOCKS is not set
 # CONFIG_GLINET_L2TP is not set
 # end of Select VPN
 
-# CONFIG_GLINET_STORAGE is not set
-# CONFIG_GLINET_USB is not set
+CONFIG_GLINET_STORAGE=y
+CONFIG_GLINET_USB=y
 # CONFIG_GLINET_WEBCAM is not set
-# CONFIG_GLINET_RTC is not set
+CONFIG_GLINET_RTC=y
 # end of GL.iNet packages choice shortcut
 
 CONFIG_TARGET_OPTIMIZATION="-Os -pipe -mno-branch-likely -mips32r2 -mtune=24kc"
@@ -422,7 +423,7 @@ CONFIG_PACKAGE_auc=m
 CONFIG_PACKAGE_base-files=y
 CONFIG_PACKAGE_block-mount=m
 CONFIG_PACKAGE_blockd=m
-CONFIG_PACKAGE_bridge=m
+CONFIG_PACKAGE_bridge=y
 CONFIG_PACKAGE_busybox=y
 CONFIG_BUSYBOX_CUSTOM=y
 CONFIG_BUSYBOX_DEFAULT_HAVE_DOT_CONFIG=y
@@ -1558,7 +1559,15 @@ CONFIG_BUSYBOX_CONFIG_FEATURE_EDITING_FANCY_PROMPT=y
 # CONFIG_BUSYBOX_CONFIG_FEATURE_EDITING_WINCH is not set
 # CONFIG_BUSYBOX_CONFIG_FEATURE_EDITING_ASK_TERMINAL is not set
 # CONFIG_BUSYBOX_CONFIG_LOCALE_SUPPORT is not set
-# CONFIG_BUSYBOX_CONFIG_UNICODE_SUPPORT is not set
+CONFIG_BUSYBOX_CONFIG_UNICODE_SUPPORT=y
+# CONFIG_BUSYBOX_CONFIG_FEATURE_CHECK_UNICODE_IN_ENV is not set
+CONFIG_BUSYBOX_CONFIG_SUBST_WCHAR=0
+CONFIG_BUSYBOX_CONFIG_LAST_SUPPORTED_WCHAR=0
+CONFIG_BUSYBOX_CONFIG_UNICODE_COMBINING_WCHARS=y
+CONFIG_BUSYBOX_CONFIG_UNICODE_WIDE_WCHARS=y
+CONFIG_BUSYBOX_CONFIG_UNICODE_BIDI_SUPPORT=y
+CONFIG_BUSYBOX_CONFIG_UNICODE_NEUTRAL_TABLE=y
+CONFIG_BUSYBOX_CONFIG_UNICODE_PRESERVE_BROKEN=y
 CONFIG_BUSYBOX_CONFIG_FEATURE_NON_POSIX_CP=y
 # CONFIG_BUSYBOX_CONFIG_FEATURE_VERBOSE_CP_MESSAGE is not set
 CONFIG_BUSYBOX_CONFIG_FEATURE_USE_SENDFILE=y
@@ -1614,7 +1623,7 @@ CONFIG_BUSYBOX_CONFIG_TAR=y
 CONFIG_BUSYBOX_CONFIG_FEATURE_TAR_CREATE=y
 # CONFIG_BUSYBOX_CONFIG_FEATURE_TAR_AUTODETECT is not set
 CONFIG_BUSYBOX_CONFIG_FEATURE_TAR_FROM=y
-# CONFIG_BUSYBOX_CONFIG_FEATURE_TAR_OLDGNU_COMPATIBILITY is not set
+CONFIG_BUSYBOX_CONFIG_FEATURE_TAR_OLDGNU_COMPATIBILITY=y
 # CONFIG_BUSYBOX_CONFIG_FEATURE_TAR_OLDSUN_COMPATIBILITY is not set
 CONFIG_BUSYBOX_CONFIG_FEATURE_TAR_GNU_EXTENSIONS=y
 # CONFIG_BUSYBOX_CONFIG_FEATURE_TAR_UNAME_GNAME is not set
@@ -1737,7 +1746,7 @@ CONFIG_BUSYBOX_CONFIG_TEST=y
 CONFIG_BUSYBOX_CONFIG_TEST1=y
 CONFIG_BUSYBOX_CONFIG_TEST2=y
 CONFIG_BUSYBOX_CONFIG_FEATURE_TEST_64=y
-# CONFIG_BUSYBOX_CONFIG_TIMEOUT is not set
+CONFIG_BUSYBOX_CONFIG_TIMEOUT=y
 CONFIG_BUSYBOX_CONFIG_TOUCH=y
 # CONFIG_BUSYBOX_CONFIG_FEATURE_TOUCH_NODEREF is not set
 CONFIG_BUSYBOX_CONFIG_FEATURE_TOUCH_SUSV3=y
@@ -1752,7 +1761,7 @@ CONFIG_BUSYBOX_CONFIG_UNAME_OSNAME="GNU/Linux"
 # CONFIG_BUSYBOX_CONFIG_BB_ARCH is not set
 CONFIG_BUSYBOX_CONFIG_UNIQ=y
 # CONFIG_BUSYBOX_CONFIG_UNLINK is not set
-# CONFIG_BUSYBOX_CONFIG_USLEEP is not set
+CONFIG_BUSYBOX_CONFIG_USLEEP=y
 # CONFIG_BUSYBOX_CONFIG_UUDECODE is not set
 # CONFIG_BUSYBOX_CONFIG_BASE64 is not set
 # CONFIG_BUSYBOX_CONFIG_UUENCODE is not set
@@ -1987,8 +1996,8 @@ CONFIG_BUSYBOX_CONFIG_HEXDUMP=y
 CONFIG_BUSYBOX_CONFIG_HWCLOCK=y
 # CONFIG_BUSYBOX_CONFIG_FEATURE_HWCLOCK_ADJTIME_FHS is not set
 # CONFIG_BUSYBOX_CONFIG_IONICE is not set
-# CONFIG_BUSYBOX_CONFIG_IPCRM is not set
-# CONFIG_BUSYBOX_CONFIG_IPCS is not set
+CONFIG_BUSYBOX_CONFIG_IPCRM=y
+CONFIG_BUSYBOX_CONFIG_IPCS=y
 # CONFIG_BUSYBOX_CONFIG_LOSETUP is not set
 # CONFIG_BUSYBOX_CONFIG_LSPCI is not set
 # CONFIG_BUSYBOX_CONFIG_LSUSB is not set
@@ -2173,9 +2182,9 @@ CONFIG_BUSYBOX_CONFIG_FEATURE_IP_NEIGH=y
 # CONFIG_BUSYBOX_CONFIG_NBDCLIENT is not set
 CONFIG_BUSYBOX_CONFIG_NC=y
 # CONFIG_BUSYBOX_CONFIG_NETCAT is not set
-# CONFIG_BUSYBOX_CONFIG_NC_SERVER is not set
-# CONFIG_BUSYBOX_CONFIG_NC_EXTRA is not set
-# CONFIG_BUSYBOX_CONFIG_NC_110_COMPAT is not set
+CONFIG_BUSYBOX_CONFIG_NC_SERVER=y
+CONFIG_BUSYBOX_CONFIG_NC_EXTRA=y
+CONFIG_BUSYBOX_CONFIG_NC_110_COMPAT=y
 CONFIG_BUSYBOX_CONFIG_NETMSG=y
 CONFIG_BUSYBOX_CONFIG_NETSTAT=y
 CONFIG_BUSYBOX_CONFIG_FEATURE_NETSTAT_WIDE=y
@@ -2209,6 +2218,7 @@ CONFIG_BUSYBOX_CONFIG_FEATURE_TRACEROUTE_VERBOSE=y
 # CONFIG_BUSYBOX_CONFIG_TUNCTL is not set
 # CONFIG_BUSYBOX_CONFIG_VCONFIG is not set
 # CONFIG_BUSYBOX_CONFIG_WGET is not set
+# CONFIG_BUSYBOX_CONFIG_FEATURE_WGET_TIMEOUT is not set
 # CONFIG_BUSYBOX_CONFIG_WHOIS is not set
 # CONFIG_BUSYBOX_CONFIG_ZCIP is not set
 # CONFIG_BUSYBOX_CONFIG_UDHCPD is not set
@@ -2251,7 +2261,7 @@ CONFIG_BUSYBOX_CONFIG_FEATURE_UDHCP_RFC3397=y
 # Process Utilities
 #
 CONFIG_BUSYBOX_CONFIG_FREE=y
-# CONFIG_BUSYBOX_CONFIG_FUSER is not set
+CONFIG_BUSYBOX_CONFIG_FUSER=y
 # CONFIG_BUSYBOX_CONFIG_IOSTAT is not set
 CONFIG_BUSYBOX_CONFIG_KILL=y
 CONFIG_BUSYBOX_CONFIG_KILLALL=y
@@ -2396,7 +2406,7 @@ CONFIG_PACKAGE_libc=y
 CONFIG_PACKAGE_libgcc=y
 CONFIG_PACKAGE_libgomp=m
 CONFIG_PACKAGE_libpthread=y
-CONFIG_PACKAGE_librt=m
+CONFIG_PACKAGE_librt=y
 CONFIG_PACKAGE_libstdcpp=m
 CONFIG_PACKAGE_logd=y
 CONFIG_PACKAGE_mtd=y
@@ -2576,7 +2586,7 @@ CONFIG_PACKAGE_libjose=m
 CONFIG_PACKAGE_nginx-mod-luci-ssl=m
 CONFIG_PACKAGE_nginx-util=m
 CONFIG_PACKAGE_tang=m
-CONFIG_PACKAGE_wireguard-tools=m
+CONFIG_PACKAGE_wireguard-tools=y
 # end of Extra packages
 
 #
@@ -2695,7 +2705,7 @@ CONFIG_PACKAGE_r8169-firmware=m
 CONFIG_PACKAGE_radeon-firmware=m
 CONFIG_PACKAGE_rs9113-firmware=m
 CONFIG_PACKAGE_rt2800-pci-firmware=m
-CONFIG_PACKAGE_rt2800-usb-firmware=m
+CONFIG_PACKAGE_rt2800-usb-firmware=y
 CONFIG_PACKAGE_rt61-pci-firmware=m
 CONFIG_PACKAGE_rt73-usb-firmware=m
 CONFIG_PACKAGE_rtl8188eu-firmware=m
@@ -2841,7 +2851,7 @@ CONFIG_PACKAGE_kmod-md-raid10=m
 CONFIG_PACKAGE_kmod-md-raid456=m
 CONFIG_PACKAGE_kmod-nbd=m
 CONFIG_PACKAGE_kmod-scsi-cdrom=m
-CONFIG_PACKAGE_kmod-scsi-core=m
+CONFIG_PACKAGE_kmod-scsi-core=y
 CONFIG_PACKAGE_kmod-scsi-generic=m
 CONFIG_PACKAGE_kmod-scsi-tape=m
 # end of Block Devices
@@ -2870,26 +2880,26 @@ CONFIG_PACKAGE_kmod-can-vcan=m
 # Cryptographic API modules
 #
 CONFIG_PACKAGE_kmod-crypto-acompress=m
-CONFIG_PACKAGE_kmod-crypto-aead=m
-CONFIG_PACKAGE_kmod-crypto-arc4=m
+CONFIG_PACKAGE_kmod-crypto-aead=y
+CONFIG_PACKAGE_kmod-crypto-arc4=y
 CONFIG_PACKAGE_kmod-crypto-authenc=m
 CONFIG_PACKAGE_kmod-crypto-cbc=m
 CONFIG_PACKAGE_kmod-crypto-ccm=m
 CONFIG_PACKAGE_kmod-crypto-cmac=m
 CONFIG_PACKAGE_kmod-crypto-crc32=m
-CONFIG_PACKAGE_kmod-crypto-crc32c=m
+CONFIG_PACKAGE_kmod-crypto-crc32c=y
 CONFIG_PACKAGE_kmod-crypto-ctr=m
 CONFIG_PACKAGE_kmod-crypto-cts=m
 CONFIG_PACKAGE_kmod-crypto-deflate=m
 CONFIG_PACKAGE_kmod-crypto-des=m
-CONFIG_PACKAGE_kmod-crypto-ecb=m
+CONFIG_PACKAGE_kmod-crypto-ecb=y
 CONFIG_PACKAGE_kmod-crypto-ecdh=m
 CONFIG_PACKAGE_kmod-crypto-echainiv=m
 CONFIG_PACKAGE_kmod-crypto-fcrypt=m
 CONFIG_PACKAGE_kmod-crypto-gcm=m
 CONFIG_PACKAGE_kmod-crypto-gf128=m
 CONFIG_PACKAGE_kmod-crypto-ghash=m
-CONFIG_PACKAGE_kmod-crypto-hash=m
+CONFIG_PACKAGE_kmod-crypto-hash=y
 CONFIG_PACKAGE_kmod-crypto-hmac=m
 CONFIG_PACKAGE_kmod-crypto-hw-ccp=m
 CONFIG_PACKAGE_kmod-crypto-hw-geode=m
@@ -2897,19 +2907,19 @@ CONFIG_PACKAGE_kmod-crypto-hw-hifn-795x=m
 CONFIG_PACKAGE_kmod-crypto-hw-padlock=m
 CONFIG_PACKAGE_kmod-crypto-hw-talitos=m
 CONFIG_PACKAGE_kmod-crypto-kpp=m
-CONFIG_PACKAGE_kmod-crypto-manager=m
+CONFIG_PACKAGE_kmod-crypto-manager=y
 CONFIG_PACKAGE_kmod-crypto-md4=m
 CONFIG_PACKAGE_kmod-crypto-md5=m
 CONFIG_PACKAGE_kmod-crypto-michael-mic=m
 CONFIG_PACKAGE_kmod-crypto-misc=m
-CONFIG_PACKAGE_kmod-crypto-null=m
+CONFIG_PACKAGE_kmod-crypto-null=y
 CONFIG_PACKAGE_kmod-crypto-pcbc=m
-CONFIG_PACKAGE_kmod-crypto-pcompress=m
+CONFIG_PACKAGE_kmod-crypto-pcompress=y
 CONFIG_PACKAGE_kmod-crypto-rmd160=m
 CONFIG_PACKAGE_kmod-crypto-rng=m
 CONFIG_PACKAGE_kmod-crypto-rsa=m
 CONFIG_PACKAGE_kmod-crypto-seqiv=m
-CONFIG_PACKAGE_kmod-crypto-sha1=m
+CONFIG_PACKAGE_kmod-crypto-sha1=y
 CONFIG_PACKAGE_kmod-crypto-sha256=m
 CONFIG_PACKAGE_kmod-crypto-sha512=m
 CONFIG_PACKAGE_kmod-crypto-test=m
@@ -2930,9 +2940,9 @@ CONFIG_PACKAGE_kmod-fs-btrfs=m
 CONFIG_PACKAGE_kmod-fs-cifs=m
 CONFIG_PACKAGE_kmod-fs-configfs=m
 CONFIG_PACKAGE_kmod-fs-cramfs=m
-CONFIG_PACKAGE_kmod-fs-exfat=m
+CONFIG_PACKAGE_kmod-fs-exfat=y
 CONFIG_PACKAGE_kmod-fs-exportfs=m
-CONFIG_PACKAGE_kmod-fs-ext4=m
+CONFIG_PACKAGE_kmod-fs-ext4=y
 CONFIG_PACKAGE_kmod-fs-f2fs=m
 CONFIG_PACKAGE_kmod-fs-fscache=m
 CONFIG_PACKAGE_kmod-fs-hfs=m
@@ -2949,13 +2959,13 @@ CONFIG_PACKAGE_kmod-fs-nfs-common-rpcsec=m
 CONFIG_PACKAGE_kmod-fs-nfs-v3=m
 CONFIG_PACKAGE_kmod-fs-nfs-v4=m
 CONFIG_PACKAGE_kmod-fs-nfsd=m
-CONFIG_PACKAGE_kmod-fs-ntfs=m
+CONFIG_PACKAGE_kmod-fs-ntfs=y
 CONFIG_PACKAGE_kmod-fs-reiserfs=m
 CONFIG_PACKAGE_kmod-fs-squashfs=m
 CONFIG_PACKAGE_kmod-fs-udf=m
-CONFIG_PACKAGE_kmod-fs-vfat=m
+CONFIG_PACKAGE_kmod-fs-vfat=y
 CONFIG_PACKAGE_kmod-fs-xfs=m
-CONFIG_PACKAGE_kmod-fuse=m
+CONFIG_PACKAGE_kmod-fuse=y
 # end of Filesystems
 
 #
@@ -3089,18 +3099,18 @@ CONFIG_PACKAGE_kmod-ledtrig-transient=m
 #
 # Libraries
 #
-CONFIG_PACKAGE_kmod-asn1-decoder=m
+CONFIG_PACKAGE_kmod-asn1-decoder=y
 CONFIG_PACKAGE_kmod-lib-cordic=m
 CONFIG_PACKAGE_kmod-lib-crc-ccitt=y
 CONFIG_PACKAGE_kmod-lib-crc-itu-t=m
-CONFIG_PACKAGE_kmod-lib-crc16=m
+CONFIG_PACKAGE_kmod-lib-crc16=y
 CONFIG_PACKAGE_kmod-lib-crc32c=m
 CONFIG_PACKAGE_kmod-lib-crc7=m
 CONFIG_PACKAGE_kmod-lib-crc8=m
 CONFIG_PACKAGE_kmod-lib-lz4=m
 CONFIG_PACKAGE_kmod-lib-lzo=m
 CONFIG_PACKAGE_kmod-lib-raid6=m
-CONFIG_PACKAGE_kmod-lib-textsearch=m
+CONFIG_PACKAGE_kmod-lib-textsearch=y
 CONFIG_PACKAGE_kmod-lib-xor=m
 CONFIG_PACKAGE_kmod-lib-zlib-deflate=m
 CONFIG_PACKAGE_kmod-lib-zlib-inflate=m
@@ -3113,7 +3123,7 @@ CONFIG_PACKAGE_kmod-lib-zstd=m
 CONFIG_PACKAGE_kmod-nls-base=y
 CONFIG_PACKAGE_kmod-nls-cp1250=m
 CONFIG_PACKAGE_kmod-nls-cp1251=m
-CONFIG_PACKAGE_kmod-nls-cp437=m
+CONFIG_PACKAGE_kmod-nls-cp437=y
 CONFIG_PACKAGE_kmod-nls-cp775=m
 CONFIG_PACKAGE_kmod-nls-cp850=m
 CONFIG_PACKAGE_kmod-nls-cp852=m
@@ -3123,14 +3133,14 @@ CONFIG_PACKAGE_kmod-nls-cp866=m
 CONFIG_PACKAGE_kmod-nls-cp932=m
 CONFIG_PACKAGE_kmod-nls-cp936=m
 CONFIG_PACKAGE_kmod-nls-cp950=m
-CONFIG_PACKAGE_kmod-nls-iso8859-1=m
+CONFIG_PACKAGE_kmod-nls-iso8859-1=y
 CONFIG_PACKAGE_kmod-nls-iso8859-13=m
 CONFIG_PACKAGE_kmod-nls-iso8859-15=m
 CONFIG_PACKAGE_kmod-nls-iso8859-2=m
 CONFIG_PACKAGE_kmod-nls-iso8859-6=m
 CONFIG_PACKAGE_kmod-nls-iso8859-8=m
 CONFIG_PACKAGE_kmod-nls-koi8r=m
-CONFIG_PACKAGE_kmod-nls-utf8=m
+CONFIG_PACKAGE_kmod-nls-utf8=y
 # end of Native Language Support
 
 #
@@ -3152,7 +3162,7 @@ CONFIG_PACKAGE_kmod-ipt-clusterip=m
 CONFIG_PACKAGE_kmod-ipt-compat-xtables=m
 CONFIG_PACKAGE_kmod-ipt-condition=m
 CONFIG_PACKAGE_kmod-ipt-conntrack=y
-CONFIG_PACKAGE_kmod-ipt-conntrack-extra=m
+CONFIG_PACKAGE_kmod-ipt-conntrack-extra=y
 CONFIG_PACKAGE_kmod-ipt-conntrack-label=m
 CONFIG_PACKAGE_kmod-ipt-coova=m
 CONFIG_PACKAGE_kmod-ipt-core=y
@@ -3167,7 +3177,7 @@ CONFIG_PACKAGE_kmod-ipt-geoip=m
 CONFIG_PACKAGE_kmod-ipt-hashlimit=m
 CONFIG_PACKAGE_kmod-ipt-iface=m
 CONFIG_PACKAGE_kmod-ipt-ipmark=m
-CONFIG_PACKAGE_kmod-ipt-ipopt=m
+CONFIG_PACKAGE_kmod-ipt-ipopt=y
 CONFIG_PACKAGE_kmod-ipt-ipp2p=m
 CONFIG_PACKAGE_kmod-ipt-iprange=m
 CONFIG_PACKAGE_kmod-ipt-ipsec=m
@@ -3189,7 +3199,7 @@ CONFIG_PACKAGE_kmod-ipt-physdev=m
 CONFIG_PACKAGE_kmod-ipt-proto=m
 CONFIG_PACKAGE_kmod-ipt-psd=m
 CONFIG_PACKAGE_kmod-ipt-quota2=m
-CONFIG_PACKAGE_kmod-ipt-raw=m
+CONFIG_PACKAGE_kmod-ipt-raw=y
 CONFIG_PACKAGE_kmod-ipt-raw6=m
 CONFIG_PACKAGE_kmod-ipt-rpfilter=m
 CONFIG_PACKAGE_kmod-ipt-rtpengine=m
@@ -3212,7 +3222,7 @@ CONFIG_PACKAGE_kmod-nf-ipvs-sip=m
 CONFIG_PACKAGE_kmod-nf-nat=y
 CONFIG_PACKAGE_kmod-nf-nat6=m
 CONFIG_PACKAGE_kmod-nf-nathelper=m
-CONFIG_PACKAGE_kmod-nf-nathelper-extra=m
+CONFIG_PACKAGE_kmod-nf-nathelper-extra=y
 CONFIG_PACKAGE_kmod-nf-reject=y
 CONFIG_PACKAGE_kmod-nf-reject6=y
 CONFIG_PACKAGE_kmod-nfnetlink=y
@@ -3261,7 +3271,7 @@ CONFIG_PACKAGE_kmod-ixgbevf=m
 CONFIG_PACKAGE_kmod-libphy=m
 CONFIG_PACKAGE_kmod-macvlan=m
 CONFIG_PACKAGE_kmod-mdio-gpio=m
-CONFIG_PACKAGE_kmod-mii=m
+CONFIG_PACKAGE_kmod-mii=y
 CONFIG_PACKAGE_kmod-mlx4-core=m
 CONFIG_PACKAGE_kmod-mlx5-core=m
 CONFIG_PACKAGE_kmod-natsemi=m
@@ -3321,6 +3331,7 @@ CONFIG_PACKAGE_kmod-bonding=m
 CONFIG_PACKAGE_kmod-bpf-test=m
 CONFIG_PACKAGE_kmod-capi=m
 CONFIG_PACKAGE_kmod-dnsresolver=m
+CONFIG_PACKAGE_kmod-fast-classifier=y
 CONFIG_PACKAGE_kmod-fou=m
 CONFIG_PACKAGE_kmod-fou6=m
 CONFIG_PACKAGE_kmod-geneve=m
@@ -3347,6 +3358,7 @@ CONFIG_PACKAGE_kmod-macsec=m
 CONFIG_PACKAGE_kmod-mdio=m
 CONFIG_PACKAGE_kmod-misdn=m
 CONFIG_PACKAGE_kmod-mpls=m
+CONFIG_PACKAGE_kmod-mppe=y
 CONFIG_PACKAGE_kmod-nat46=m
 CONFIG_PACKAGE_kmod-netem=m
 CONFIG_PACKAGE_kmod-netlink-diag=m
@@ -3359,7 +3371,6 @@ CONFIG_PACKAGE_kmod-openvswitch-vxlan=m
 CONFIG_PACKAGE_kmod-pf-ring=m
 CONFIG_PACKAGE_kmod-pktgen=m
 CONFIG_PACKAGE_kmod-ppp=y
-CONFIG_PACKAGE_kmod-mppe=m
 CONFIG_PACKAGE_kmod-ppp-synctty=m
 CONFIG_PACKAGE_kmod-pppoa=m
 CONFIG_PACKAGE_kmod-pppoe=y
@@ -3372,23 +3383,24 @@ CONFIG_PACKAGE_kmod-sched-bpf=m
 CONFIG_PACKAGE_kmod-sched-cake=m
 CONFIG_PACKAGE_kmod-sched-cake-virtual=m
 CONFIG_PACKAGE_kmod-sched-connmark=m
-CONFIG_PACKAGE_kmod-sched-core=m
+CONFIG_PACKAGE_kmod-sched-core=y
 CONFIG_PACKAGE_kmod-sched-ctinfo=m
 CONFIG_PACKAGE_kmod-sched-flower=m
 CONFIG_PACKAGE_kmod-sched-ipset=m
 CONFIG_PACKAGE_kmod-sched-mqprio=m
 CONFIG_PACKAGE_kmod-sctp=m
+CONFIG_PACKAGE_kmod-shortcut-fe=y
 CONFIG_PACKAGE_kmod-sit=m
 CONFIG_PACKAGE_kmod-slhc=y
 CONFIG_PACKAGE_kmod-slip=m
 CONFIG_PACKAGE_kmod-tcp-bbr=m
 CONFIG_PACKAGE_kmod-trelay=m
-CONFIG_PACKAGE_kmod-tun=m
-CONFIG_PACKAGE_kmod-udptunnel4=m
-CONFIG_PACKAGE_kmod-udptunnel6=m
+CONFIG_PACKAGE_kmod-tun=y
+CONFIG_PACKAGE_kmod-udptunnel4=y
+CONFIG_PACKAGE_kmod-udptunnel6=y
 CONFIG_PACKAGE_kmod-veth=m
 CONFIG_PACKAGE_kmod-vxlan=m
-CONFIG_PACKAGE_kmod-wireguard=m
+CONFIG_PACKAGE_kmod-wireguard=y
 CONFIG_PACKAGE_kmod-xfrm-interface=m
 # end of Network Support
 
@@ -3428,7 +3440,6 @@ CONFIG_PACKAGE_kmod-mtd-rw=m
 CONFIG_PACKAGE_kmod-mtdoops=m
 CONFIG_PACKAGE_kmod-mtdram=m
 CONFIG_PACKAGE_kmod-mtdtests=m
-CONFIG_PACKAGE_kmod-oui-bwm=m
 CONFIG_PACKAGE_kmod-parport-pc=m
 CONFIG_PACKAGE_kmod-ppdev=m
 CONFIG_PACKAGE_kmod-pps=m
@@ -3527,39 +3538,39 @@ CONFIG_PACKAGE_kmod-usb-dwc3=m
 CONFIG_PACKAGE_kmod-usb-ehci=y
 CONFIG_PACKAGE_kmod-usb-hid=m
 CONFIG_PACKAGE_kmod-usb-ledtrig-usbport=m
-CONFIG_PACKAGE_kmod-usb-net=m
+CONFIG_PACKAGE_kmod-usb-net=y
 CONFIG_PACKAGE_kmod-usb-net-asix=m
 CONFIG_PACKAGE_kmod-usb-net-asix-ax88179=m
 CONFIG_PACKAGE_kmod-usb-net-cdc-eem=m
-CONFIG_PACKAGE_kmod-usb-net-cdc-ether=m
+CONFIG_PACKAGE_kmod-usb-net-cdc-ether=y
 CONFIG_PACKAGE_kmod-usb-net-cdc-mbim=m
 CONFIG_PACKAGE_kmod-usb-net-cdc-ncm=m
 CONFIG_PACKAGE_kmod-usb-net-cdc-subset=m
 CONFIG_PACKAGE_kmod-usb-net-dm9601-ether=m
 CONFIG_PACKAGE_kmod-usb-net-hso=m
 CONFIG_PACKAGE_kmod-usb-net-huawei-cdc-ncm=m
-CONFIG_PACKAGE_kmod-usb-net-ipheth=m
+CONFIG_PACKAGE_kmod-usb-net-ipheth=y
 CONFIG_PACKAGE_kmod-usb-net-kalmia=m
 CONFIG_PACKAGE_kmod-usb-net-kaweth=m
 CONFIG_PACKAGE_kmod-usb-net-mcs7830=m
 CONFIG_PACKAGE_kmod-usb-net-pegasus=m
 CONFIG_PACKAGE_kmod-usb-net-pl=m
-CONFIG_PACKAGE_kmod-usb-net-qmi-wwan=m
-CONFIG_PACKAGE_kmod-usb-net-rndis=m
+CONFIG_PACKAGE_kmod-usb-net-qmi-wwan=y
+CONFIG_PACKAGE_kmod-usb-net-rndis=y
 CONFIG_PACKAGE_kmod-usb-net-rtl8150=m
 CONFIG_PACKAGE_kmod-usb-net-rtl8152=m
 CONFIG_PACKAGE_kmod-usb-net-sierrawireless=m
 CONFIG_PACKAGE_kmod-usb-net-smsc95xx=m
 CONFIG_PACKAGE_kmod-usb-net-sr9700=m
-CONFIG_PACKAGE_kmod-usb-ohci=m
+CONFIG_PACKAGE_kmod-usb-ohci=y
 CONFIG_PACKAGE_kmod-usb-ohci-pci=m
 CONFIG_PACKAGE_kmod-usb-phy-nop=m
 CONFIG_PACKAGE_kmod-usb-printer=m
-CONFIG_PACKAGE_kmod-usb-serial=m
+CONFIG_PACKAGE_kmod-usb-serial=y
 CONFIG_PACKAGE_kmod-usb-serial-ark3116=m
 CONFIG_PACKAGE_kmod-usb-serial-belkin=m
-CONFIG_PACKAGE_kmod-usb-serial-ch341=m
-CONFIG_PACKAGE_kmod-usb-serial-cp210x=m
+CONFIG_PACKAGE_kmod-usb-serial-ch341=y
+CONFIG_PACKAGE_kmod-usb-serial-cp210x=y
 CONFIG_PACKAGE_kmod-usb-serial-cypress-m8=m
 CONFIG_PACKAGE_kmod-usb-serial-dmx_usb_module=m
 CONFIG_PACKAGE_kmod-usb-serial-edgeport=m
@@ -3570,21 +3581,21 @@ CONFIG_PACKAGE_kmod-usb-serial-keyspan=m
 CONFIG_PACKAGE_kmod-usb-serial-mct=m
 CONFIG_PACKAGE_kmod-usb-serial-mos7720=m
 CONFIG_PACKAGE_kmod-usb-serial-mos7840=m
-CONFIG_PACKAGE_kmod-usb-serial-option=m
+CONFIG_PACKAGE_kmod-usb-serial-option=y
 CONFIG_PACKAGE_kmod-usb-serial-oti6858=m
 CONFIG_PACKAGE_kmod-usb-serial-pl2303=m
 CONFIG_PACKAGE_kmod-usb-serial-qualcomm=m
-CONFIG_PACKAGE_kmod-usb-serial-sierrawireless=m
+CONFIG_PACKAGE_kmod-usb-serial-sierrawireless=y
 CONFIG_PACKAGE_kmod-usb-serial-simple=m
 CONFIG_PACKAGE_kmod-usb-serial-ti-usb=m
 CONFIG_PACKAGE_kmod-usb-serial-visor=m
-CONFIG_PACKAGE_kmod-usb-serial-wwan=m
+CONFIG_PACKAGE_kmod-usb-serial-wwan=y
 CONFIG_PACKAGE_kmod-usb-serial-xr_usb_serial_common=m
-CONFIG_PACKAGE_kmod-usb-storage=m
+CONFIG_PACKAGE_kmod-usb-storage=y
 CONFIG_PACKAGE_kmod-usb-storage-extras=m
 CONFIG_PACKAGE_kmod-usb-storage-uas=m
-CONFIG_PACKAGE_kmod-usb-uhci=m
-CONFIG_PACKAGE_kmod-usb-wdm=m
+CONFIG_PACKAGE_kmod-usb-uhci=y
+CONFIG_PACKAGE_kmod-usb-wdm=y
 CONFIG_PACKAGE_kmod-usb-yealink=m
 CONFIG_PACKAGE_kmod-usb2=y
 CONFIG_PACKAGE_kmod-usb2-pci=m
@@ -3792,16 +3803,16 @@ CONFIG_PACKAGE_kmod-rsi91x-usb=m
 CONFIG_PACKAGE_kmod-rt2400-pci=m
 CONFIG_PACKAGE_kmod-rt2500-pci=m
 CONFIG_PACKAGE_kmod-rt2500-usb=m
-CONFIG_PACKAGE_kmod-rt2800-lib=m
+CONFIG_PACKAGE_kmod-rt2800-lib=y
 CONFIG_PACKAGE_kmod-rt2800-mmio=m
 CONFIG_PACKAGE_kmod-rt2800-pci=m
-CONFIG_PACKAGE_kmod-rt2800-usb=m
-CONFIG_PACKAGE_kmod-rt2x00-lib=m
+CONFIG_PACKAGE_kmod-rt2800-usb=y
+CONFIG_PACKAGE_kmod-rt2x00-lib=y
 # CONFIG_PACKAGE_RT2X00_LIB_DEBUGFS is not set
 # CONFIG_PACKAGE_RT2X00_DEBUG is not set
 CONFIG_PACKAGE_kmod-rt2x00-mmio=m
 CONFIG_PACKAGE_kmod-rt2x00-pci=m
-CONFIG_PACKAGE_kmod-rt2x00-usb=m
+CONFIG_PACKAGE_kmod-rt2x00-usb=y
 CONFIG_PACKAGE_kmod-rt61-pci=m
 CONFIG_PACKAGE_kmod-rt73-usb=m
 CONFIG_PACKAGE_kmod-rtl8180=m
@@ -5207,7 +5218,7 @@ CONFIG_PACKAGE_libupm-zfm20-python3=m
 #
 # Languages
 #
-CONFIG_PACKAGE_libyaml=m
+CONFIG_PACKAGE_libyaml=y
 # end of Languages
 
 #
@@ -5310,7 +5321,7 @@ CONFIG_GNUTLS_ANON=y
 CONFIG_PACKAGE_libmbedtls=m
 # CONFIG_LIBMBEDTLS_DEBUG_C is not set
 CONFIG_PACKAGE_libnss=m
-CONFIG_PACKAGE_libopenssl=m
+CONFIG_PACKAGE_libopenssl=y
 
 #
 # Build Options
@@ -5435,11 +5446,11 @@ CONFIG_PACKAGE_sofia-sip=m
 #
 # libimobiledevice
 #
-CONFIG_PACKAGE_libimobiledevice=m
+CONFIG_PACKAGE_libimobiledevice=y
 CONFIG_PACKAGE_libirecovery=m
-CONFIG_PACKAGE_libplist=m
+CONFIG_PACKAGE_libplist=y
 CONFIG_PACKAGE_libplistcxx=m
-CONFIG_PACKAGE_libusbmuxd=m
+CONFIG_PACKAGE_libusbmuxd=y
 # end of libimobiledevice
 
 CONFIG_PACKAGE_alsa-lib=m
@@ -5517,9 +5528,9 @@ CONFIG_PACKAGE_check=m
 CONFIG_PACKAGE_confuse=m
 CONFIG_PACKAGE_czmq=m
 CONFIG_PACKAGE_dtndht=m
-CONFIG_PACKAGE_fcgi=m
+CONFIG_PACKAGE_fcgi=y
 CONFIG_PACKAGE_fcgixx=m
-CONFIG_PACKAGE_getdns=m
+CONFIG_PACKAGE_getdns=y
 
 #
 # Configuration
@@ -5564,7 +5575,7 @@ CONFIG_PACKAGE_libavahi-compat-libdnssd=m
 CONFIG_PACKAGE_libavahi-dbus-support=m
 CONFIG_PACKAGE_libavahi-nodbus-support=m
 CONFIG_PACKAGE_libbfd=m
-CONFIG_PACKAGE_libblkid=m
+CONFIG_PACKAGE_libblkid=y
 CONFIG_PACKAGE_libblobmsg-json=y
 CONFIG_PACKAGE_libbsd=m
 CONFIG_PACKAGE_libcap=m
@@ -5572,7 +5583,7 @@ CONFIG_PACKAGE_libcap-bin=m
 CONFIG_PACKAGE_libcap-bin-capsh-shell="/bin/sh"
 CONFIG_PACKAGE_libcap-ng=m
 CONFIG_PACKAGE_libcap-ng-bin=m
-CONFIG_PACKAGE_libcares=m
+CONFIG_PACKAGE_libcares=y
 CONFIG_PACKAGE_libcgroup=m
 CONFIG_PACKAGE_libcharset=m
 CONFIG_PACKAGE_libcoap=m
@@ -5638,7 +5649,7 @@ CONFIG_PACKAGE_libdrm=m
 CONFIG_PACKAGE_libdw=m
 CONFIG_PACKAGE_libecdsautil=m
 CONFIG_PACKAGE_libedit=m
-CONFIG_PACKAGE_libelf=m
+CONFIG_PACKAGE_libelf=y
 CONFIG_PACKAGE_libesmtp=m
 CONFIG_PACKAGE_libestr=m
 CONFIG_PACKAGE_libev=m
@@ -5816,7 +5827,7 @@ CONFIG_PACKAGE_liblua5.3=m
 CONFIG_PACKAGE_liblucihttp=m
 CONFIG_PACKAGE_liblucihttp-lua=m
 CONFIG_PACKAGE_liblxc=m
-CONFIG_PACKAGE_liblzo=m
+CONFIG_PACKAGE_liblzo=y
 CONFIG_PACKAGE_libmad=m
 CONFIG_PACKAGE_libmagic=m
 CONFIG_PACKAGE_libmaxminddb=m
@@ -5929,7 +5940,7 @@ CONFIG_PACKAGE_libpcap=m
 
 CONFIG_PACKAGE_libpci=m
 CONFIG_PACKAGE_libpciaccess=m
-CONFIG_PACKAGE_libpcre=m
+CONFIG_PACKAGE_libpcre=y
 CONFIG_PACKAGE_libpcre16=m
 CONFIG_PACKAGE_libpcre2=m
 # CONFIG_PCRE2_JIT_ENABLED is not set
@@ -6060,12 +6071,12 @@ CONFIG_PACKAGE_libupnp-sample=m
 CONFIG_PACKAGE_libupnpp=m
 CONFIG_PACKAGE_liburcu=m
 CONFIG_PACKAGE_liburing=m
-CONFIG_PACKAGE_libusb-1.0=m
+CONFIG_PACKAGE_libusb-1.0=y
 CONFIG_PACKAGE_libusb-compat=m
 CONFIG_PACKAGE_libustream-mbedtls=m
 CONFIG_PACKAGE_libustream-openssl=m
 CONFIG_PACKAGE_libustream-wolfssl=m
-CONFIG_PACKAGE_libuuid=m
+CONFIG_PACKAGE_libuuid=y
 CONFIG_PACKAGE_libuv=m
 CONFIG_PACKAGE_libuwifi=m
 CONFIG_PACKAGE_libv4l=m
@@ -6081,7 +6092,7 @@ CONFIG_PACKAGE_libwrap=m
 CONFIG_PACKAGE_libx264=m
 CONFIG_PACKAGE_libxerces-c=m
 CONFIG_PACKAGE_libxerces-c-samples=m
-CONFIG_PACKAGE_libxml2=m
+CONFIG_PACKAGE_libxml2=y
 CONFIG_PACKAGE_libxslt=m
 CONFIG_PACKAGE_libyaml-cpp=m
 CONFIG_PACKAGE_libyang=m
@@ -6128,7 +6139,7 @@ CONFIG_PACKAGE_xmlrpc-c-internal=m
 CONFIG_PACKAGE_xmlrpc-c-server=m
 CONFIG_PACKAGE_yajl=m
 CONFIG_PACKAGE_yubico-pam=m
-CONFIG_PACKAGE_zlib=m
+CONFIG_PACKAGE_zlib=y
 
 #
 # Configuration
@@ -6346,7 +6357,7 @@ CONFIG_PACKAGE_luci-proto-relay=m
 CONFIG_PACKAGE_luci-proto-sstp=m
 CONFIG_PACKAGE_luci-proto-vpnc=m
 CONFIG_PACKAGE_luci-proto-vxlan=m
-CONFIG_PACKAGE_luci-proto-wireguard=m
+CONFIG_PACKAGE_luci-proto-wireguard=y
 # end of 5. Protocols
 
 #
@@ -9476,7 +9487,7 @@ CONFIG_PACKAGE_rsync=m
 CONFIG_PACKAGE_rsyncd=m
 CONFIG_PACKAGE_vsftpd=m
 CONFIG_PACKAGE_vsftpd-tls=m
-CONFIG_PACKAGE_wget=m
+CONFIG_PACKAGE_wget=y
 CONFIG_PACKAGE_wget-nossl=m
 # end of File Transfer
 
@@ -9534,7 +9545,7 @@ CONFIG_PACKAGE_iptables-mod-checksum=m
 CONFIG_PACKAGE_iptables-mod-cluster=m
 CONFIG_PACKAGE_iptables-mod-clusterip=m
 CONFIG_PACKAGE_iptables-mod-condition=m
-CONFIG_PACKAGE_iptables-mod-conntrack-extra=m
+CONFIG_PACKAGE_iptables-mod-conntrack-extra=y
 CONFIG_PACKAGE_iptables-mod-delude=m
 CONFIG_PACKAGE_iptables-mod-dhcpmac=m
 CONFIG_PACKAGE_iptables-mod-dnetmap=m
@@ -9545,7 +9556,7 @@ CONFIG_PACKAGE_iptables-mod-geoip=m
 CONFIG_PACKAGE_iptables-mod-hashlimit=m
 CONFIG_PACKAGE_iptables-mod-iface=m
 CONFIG_PACKAGE_iptables-mod-ipmark=m
-CONFIG_PACKAGE_iptables-mod-ipopt=m
+CONFIG_PACKAGE_iptables-mod-ipopt=y
 CONFIG_PACKAGE_iptables-mod-ipp2p=m
 CONFIG_PACKAGE_iptables-mod-iprange=m
 CONFIG_PACKAGE_iptables-mod-ipsec=m
@@ -9790,7 +9801,7 @@ CONFIG_PACKAGE_pdns-backend-remote=m
 CONFIG_PACKAGE_pdns-ixfrdist=m
 CONFIG_PACKAGE_pdns-recursor=m
 CONFIG_PACKAGE_pdns-tools=m
-CONFIG_PACKAGE_stubby=m
+CONFIG_PACKAGE_stubby=y
 CONFIG_PACKAGE_tor-hs=m
 CONFIG_PACKAGE_torsocks=m
 CONFIG_PACKAGE_unbound=m
@@ -10078,7 +10089,7 @@ CONFIG_PACKAGE_frr-zebra=m
 CONFIG_PACKAGE_genl=m
 CONFIG_PACKAGE_igmpproxy=m
 CONFIG_PACKAGE_ip-bridge=m
-CONFIG_PACKAGE_ip-full=m
+CONFIG_PACKAGE_ip-full=y
 CONFIG_PACKAGE_ip-tiny=m
 CONFIG_PACKAGE_lldpd=m
 
@@ -10100,7 +10111,7 @@ CONFIG_LLDPD_WITH_CUSTOM=y
 
 CONFIG_PACKAGE_mcproxy=m
 CONFIG_PACKAGE_mrmctl=m
-CONFIG_PACKAGE_mwan3=m
+CONFIG_PACKAGE_mwan3=y
 CONFIG_PACKAGE_nstat=m
 CONFIG_PACKAGE_olsrd=m
 CONFIG_PACKAGE_olsrd-mod-arprefresh=m
@@ -10135,7 +10146,7 @@ CONFIG_PACKAGE_quagga-vtysh=m
 CONFIG_PACKAGE_quagga-watchquagga=m
 CONFIG_PACKAGE_quagga-zebra=m
 CONFIG_PACKAGE_rdma=m
-CONFIG_PACKAGE_relayd=m
+CONFIG_PACKAGE_relayd=y
 CONFIG_PACKAGE_smcroute=m
 CONFIG_PACKAGE_ss=m
 CONFIG_PACKAGE_sslh=m
@@ -11145,30 +11156,18 @@ CONFIG_OPENVPN_mbedtls_ENABLE_DEF_AUTH=y
 CONFIG_OPENVPN_mbedtls_ENABLE_PF=y
 # CONFIG_OPENVPN_mbedtls_ENABLE_IPROUTE2 is not set
 CONFIG_OPENVPN_mbedtls_ENABLE_SMALL=y
-CONFIG_PACKAGE_openvpn-nossl=m
-CONFIG_OPENVPN_nossl_ENABLE_LZO=y
-CONFIG_OPENVPN_nossl_ENABLE_LZ4=y
-CONFIG_OPENVPN_nossl_ENABLE_SERVER=y
-# CONFIG_OPENVPN_nossl_ENABLE_MANAGEMENT is not set
-CONFIG_OPENVPN_nossl_ENABLE_FRAGMENT=y
-CONFIG_OPENVPN_nossl_ENABLE_MULTIHOME=y
-CONFIG_OPENVPN_nossl_ENABLE_PORT_SHARE=y
-CONFIG_OPENVPN_nossl_ENABLE_DEF_AUTH=y
-CONFIG_OPENVPN_nossl_ENABLE_PF=y
-# CONFIG_OPENVPN_nossl_ENABLE_IPROUTE2 is not set
-CONFIG_OPENVPN_nossl_ENABLE_SMALL=y
-CONFIG_PACKAGE_openvpn-openssl=m
+CONFIG_PACKAGE_openvpn-openssl=y
 CONFIG_OPENVPN_openssl_ENABLE_LZO=y
 CONFIG_OPENVPN_openssl_ENABLE_LZ4=y
-# CONFIG_OPENVPN_openssl_ENABLE_X509_ALT_USERNAME is not set
+CONFIG_OPENVPN_openssl_ENABLE_X509_ALT_USERNAME=y
 CONFIG_OPENVPN_openssl_ENABLE_SERVER=y
-# CONFIG_OPENVPN_openssl_ENABLE_MANAGEMENT is not set
+CONFIG_OPENVPN_openssl_ENABLE_MANAGEMENT=y
 CONFIG_OPENVPN_openssl_ENABLE_FRAGMENT=y
 CONFIG_OPENVPN_openssl_ENABLE_MULTIHOME=y
 CONFIG_OPENVPN_openssl_ENABLE_PORT_SHARE=y
 CONFIG_OPENVPN_openssl_ENABLE_DEF_AUTH=y
 CONFIG_OPENVPN_openssl_ENABLE_PF=y
-# CONFIG_OPENVPN_openssl_ENABLE_IPROUTE2 is not set
+CONFIG_OPENVPN_openssl_ENABLE_IPROUTE2=y
 CONFIG_OPENVPN_openssl_ENABLE_SMALL=y
 CONFIG_PACKAGE_pptpd=m
 CONFIG_PACKAGE_softethervpn-base=m
@@ -11290,7 +11289,7 @@ CONFIG_VPNC_GNUTLS=y
 # end of Configuration
 
 CONFIG_PACKAGE_vpnc-scripts=m
-CONFIG_PACKAGE_wireguard=m
+CONFIG_PACKAGE_wireguard=y
 CONFIG_PACKAGE_xl2tpd=m
 CONFIG_PACKAGE_zerotier=m
 
@@ -11322,7 +11321,7 @@ CONFIG_PACKAGE_comgt=m
 CONFIG_PACKAGE_comgt-directip=m
 CONFIG_PACKAGE_comgt-ncm=m
 CONFIG_PACKAGE_umbim=m
-CONFIG_PACKAGE_uqmi=m
+CONFIG_PACKAGE_uqmi=y
 # end of WWAN
 
 #
@@ -11360,43 +11359,43 @@ CONFIG_PACKAGE_haproxy-nossl=m
 CONFIG_PACKAGE_kcptun-client=m
 CONFIG_PACKAGE_kcptun-config=m
 CONFIG_PACKAGE_kcptun-server=m
-CONFIG_PACKAGE_lighttpd=m
+CONFIG_PACKAGE_lighttpd=y
 CONFIG_LIGHTTPD_SSL=y
-CONFIG_PACKAGE_lighttpd-mod-access=m
-CONFIG_PACKAGE_lighttpd-mod-accesslog=m
-CONFIG_PACKAGE_lighttpd-mod-alias=m
-CONFIG_PACKAGE_lighttpd-mod-auth=m
-CONFIG_PACKAGE_lighttpd-mod-authn_file=m
-CONFIG_PACKAGE_lighttpd-mod-authn_gssapi=m
-CONFIG_PACKAGE_lighttpd-mod-authn_ldap=m
-CONFIG_PACKAGE_lighttpd-mod-authn_mysql=m
-CONFIG_PACKAGE_lighttpd-mod-cgi=m
-CONFIG_PACKAGE_lighttpd-mod-cml=m
-CONFIG_PACKAGE_lighttpd-mod-compress=m
-CONFIG_PACKAGE_lighttpd-mod-deflate=m
-CONFIG_PACKAGE_lighttpd-mod-evasive=m
-CONFIG_PACKAGE_lighttpd-mod-evhost=m
-CONFIG_PACKAGE_lighttpd-mod-expire=m
-CONFIG_PACKAGE_lighttpd-mod-extforward=m
-CONFIG_PACKAGE_lighttpd-mod-fastcgi=m
-CONFIG_PACKAGE_lighttpd-mod-flv_streaming=m
-CONFIG_PACKAGE_lighttpd-mod-magnet=m
-CONFIG_PACKAGE_lighttpd-mod-mysql_vhost=m
-CONFIG_PACKAGE_lighttpd-mod-proxy=m
-CONFIG_PACKAGE_lighttpd-mod-redirect=m
-CONFIG_PACKAGE_lighttpd-mod-rewrite=m
-CONFIG_PACKAGE_lighttpd-mod-rrdtool=m
-CONFIG_PACKAGE_lighttpd-mod-scgi=m
-CONFIG_PACKAGE_lighttpd-mod-secdownload=m
-CONFIG_PACKAGE_lighttpd-mod-setenv=m
-CONFIG_PACKAGE_lighttpd-mod-simple_vhost=m
-CONFIG_PACKAGE_lighttpd-mod-ssi=m
-CONFIG_PACKAGE_lighttpd-mod-status=m
-CONFIG_PACKAGE_lighttpd-mod-trigger_b4_dl=m
-CONFIG_PACKAGE_lighttpd-mod-userdir=m
-CONFIG_PACKAGE_lighttpd-mod-usertrack=m
-CONFIG_PACKAGE_lighttpd-mod-webdav=m
-CONFIG_PACKAGE_lighttpd-mod-wstunnel=m
+CONFIG_PACKAGE_lighttpd-mod-access=y
+# CONFIG_PACKAGE_lighttpd-mod-accesslog is not set
+# CONFIG_PACKAGE_lighttpd-mod-alias is not set
+# CONFIG_PACKAGE_lighttpd-mod-auth is not set
+# CONFIG_PACKAGE_lighttpd-mod-authn_file is not set
+# CONFIG_PACKAGE_lighttpd-mod-authn_gssapi is not set
+# CONFIG_PACKAGE_lighttpd-mod-authn_ldap is not set
+# CONFIG_PACKAGE_lighttpd-mod-authn_mysql is not set
+CONFIG_PACKAGE_lighttpd-mod-cgi=y
+# CONFIG_PACKAGE_lighttpd-mod-cml is not set
+# CONFIG_PACKAGE_lighttpd-mod-compress is not set
+# CONFIG_PACKAGE_lighttpd-mod-deflate is not set
+# CONFIG_PACKAGE_lighttpd-mod-evasive is not set
+# CONFIG_PACKAGE_lighttpd-mod-evhost is not set
+CONFIG_PACKAGE_lighttpd-mod-expire=y
+# CONFIG_PACKAGE_lighttpd-mod-extforward is not set
+CONFIG_PACKAGE_lighttpd-mod-fastcgi=y
+# CONFIG_PACKAGE_lighttpd-mod-flv_streaming is not set
+# CONFIG_PACKAGE_lighttpd-mod-magnet is not set
+# CONFIG_PACKAGE_lighttpd-mod-mysql_vhost is not set
+CONFIG_PACKAGE_lighttpd-mod-proxy=y
+# CONFIG_PACKAGE_lighttpd-mod-redirect is not set
+# CONFIG_PACKAGE_lighttpd-mod-rewrite is not set
+# CONFIG_PACKAGE_lighttpd-mod-rrdtool is not set
+# CONFIG_PACKAGE_lighttpd-mod-scgi is not set
+# CONFIG_PACKAGE_lighttpd-mod-secdownload is not set
+# CONFIG_PACKAGE_lighttpd-mod-setenv is not set
+# CONFIG_PACKAGE_lighttpd-mod-simple_vhost is not set
+# CONFIG_PACKAGE_lighttpd-mod-ssi is not set
+# CONFIG_PACKAGE_lighttpd-mod-status is not set
+# CONFIG_PACKAGE_lighttpd-mod-trigger_b4_dl is not set
+# CONFIG_PACKAGE_lighttpd-mod-userdir is not set
+# CONFIG_PACKAGE_lighttpd-mod-usertrack is not set
+# CONFIG_PACKAGE_lighttpd-mod-webdav is not set
+# CONFIG_PACKAGE_lighttpd-mod-wstunnel is not set
 CONFIG_PACKAGE_nginx=m
 CONFIG_PACKAGE_nginx-all-module=m
 CONFIG_PACKAGE_nginx-mod-luci=m
@@ -11581,7 +11580,7 @@ CONFIG_PACKAGE_hostapd-wolfssl=m
 CONFIG_PACKAGE_hs20-client=m
 CONFIG_PACKAGE_hs20-common=m
 CONFIG_PACKAGE_hs20-server=m
-CONFIG_PACKAGE_wpa-cli=m
+CONFIG_PACKAGE_wpa-cli=y
 CONFIG_PACKAGE_wpa-supplicant=m
 # CONFIG_WPA_RFKILL_SUPPORT is not set
 CONFIG_WPA_MSG_MIN_PRIORITY=3
@@ -11674,7 +11673,7 @@ CONFIG_PACKAGE_ds-lite=m
 CONFIG_PACKAGE_esniper=m
 CONFIG_PACKAGE_etherwake=m
 CONFIG_PACKAGE_etherwake-nfqueue=m
-CONFIG_PACKAGE_ethtool=m
+CONFIG_PACKAGE_ethtool=y
 # CONFIG_ETHTOOL_PRETTY_DUMP is not set
 CONFIG_PACKAGE_fakeidentd=m
 CONFIG_PACKAGE_fakepop=m
@@ -11747,7 +11746,7 @@ CONFIG_PACKAGE_iperf=m
 CONFIG_PACKAGE_iperf3=m
 CONFIG_PACKAGE_iperf3-ssl=m
 CONFIG_PACKAGE_ipip=m
-CONFIG_PACKAGE_ipset=m
+CONFIG_PACKAGE_ipset=y
 CONFIG_PACKAGE_ipset-dns=m
 CONFIG_PACKAGE_iptraf-ng=m
 CONFIG_PACKAGE_iputils-arping=m
@@ -11792,7 +11791,7 @@ CONFIG_PACKAGE_krb5-client=m
 CONFIG_PACKAGE_krb5-libs=m
 CONFIG_PACKAGE_krb5-server=m
 CONFIG_PACKAGE_krb5-server-extras=m
-CONFIG_PACKAGE_libipset=m
+CONFIG_PACKAGE_libipset=y
 CONFIG_PACKAGE_libndp=m
 CONFIG_PACKAGE_linknx=m
 CONFIG_PACKAGE_lynx=m
@@ -11974,6 +11973,11 @@ CONFIG_RPCBIND_RMTCALLS=y
 CONFIG_PACKAGE_rssileds=m
 CONFIG_PACKAGE_rsyslog=m
 CONFIG_PACKAGE_safe-search=m
+CONFIG_PACKAGE_samba36-client=m
+CONFIG_PACKAGE_samba36-hotplug=m
+CONFIG_PACKAGE_samba36-net=m
+CONFIG_PACKAGE_samba36-server=y
+CONFIG_PACKAGE_SAMBA_MAX_DEBUG_LEVEL=-1
 CONFIG_PACKAGE_samba4-admin=m
 CONFIG_PACKAGE_samba4-client=m
 CONFIG_PACKAGE_samba4-libs=m
@@ -12069,46 +12073,10 @@ CONFIG_PACKAGE_vtiv6=m
 CONFIG_PACKAGE_vxlan=m
 CONFIG_PACKAGE_wakeonlan=m
 CONFIG_PACKAGE_wpan-tools=m
-CONFIG_PACKAGE_wwan=m
+CONFIG_PACKAGE_wwan=y
 CONFIG_PACKAGE_xfrm=m
 CONFIG_PACKAGE_xinetd=m
 # end of Network
-
-#
-# Oui
-#
-
-#
-# Applications
-#
-CONFIG_PACKAGE_oui-app-active-routes=m
-CONFIG_PACKAGE_oui-app-admin=m
-CONFIG_PACKAGE_oui-app-cron=m
-CONFIG_PACKAGE_oui-app-dhcp=m
-CONFIG_PACKAGE_oui-app-diagnostics=m
-CONFIG_PACKAGE_oui-app-dmesg=m
-CONFIG_PACKAGE_oui-app-example=m
-CONFIG_PACKAGE_oui-app-firewall=m
-CONFIG_PACKAGE_oui-app-home=m
-CONFIG_PACKAGE_oui-app-hosts=m
-CONFIG_PACKAGE_oui-app-interfaces=m
-CONFIG_PACKAGE_oui-app-leds=m
-CONFIG_PACKAGE_oui-app-login=m
-CONFIG_PACKAGE_oui-app-processes=m
-CONFIG_PACKAGE_oui-app-routes=m
-CONFIG_PACKAGE_oui-app-rtty=m
-CONFIG_PACKAGE_oui-app-ssh=m
-CONFIG_PACKAGE_oui-app-syslog=m
-CONFIG_PACKAGE_oui-app-system=m
-CONFIG_PACKAGE_oui-app-upgrade=m
-CONFIG_PACKAGE_oui-app-wireless=m
-CONFIG_PACKAGE_oui-app-wizard=m
-# end of Applications
-
-CONFIG_PACKAGE_oui-bwm=m
-CONFIG_PACKAGE_oui-httpd=m
-CONFIG_PACKAGE_oui-ui-core=m
-# end of Oui
 
 #
 # Sound
@@ -12203,7 +12171,7 @@ CONFIG_PACKAGE_gzip=m
 CONFIG_PACKAGE_lz4=m
 CONFIG_PACKAGE_pigz=m
 CONFIG_PACKAGE_unrar=m
-CONFIG_PACKAGE_unzip=m
+CONFIG_PACKAGE_unzip=y
 CONFIG_PACKAGE_xz-utils=m
 CONFIG_PACKAGE_lzmadec=m
 CONFIG_PACKAGE_lzmainfo=m
@@ -12274,7 +12242,7 @@ CONFIG_PACKAGE_unixodbc-tools=m
 # Disc
 #
 CONFIG_PACKAGE_blkdiscard=m
-CONFIG_PACKAGE_blkid=m
+CONFIG_PACKAGE_blkid=y
 CONFIG_PACKAGE_blockdev=m
 CONFIG_PACKAGE_cfdisk=m
 CONFIG_PACKAGE_cgdisk=m
@@ -12361,7 +12329,7 @@ CONFIG_PACKAGE_mkhfs=m
 CONFIG_PACKAGE_ncdu=m
 CONFIG_PACKAGE_nfs-utils=m
 CONFIG_PACKAGE_nfs-utils-libs=m
-CONFIG_PACKAGE_ntfs-3g=m
+CONFIG_PACKAGE_ntfs-3g=y
 # CONFIG_PACKAGE_NTFS-3G_USE_LIBFUSE is not set
 CONFIG_PACKAGE_NTFS-3G_HAS_PROBE=y
 CONFIG_PACKAGE_ntfs-3g-low=m
@@ -12489,7 +12457,7 @@ CONFIG_PACKAGE_irecovery=m
 CONFIG_PACKAGE_libimobiledevice-utils=m
 CONFIG_PACKAGE_libusbmuxd-utils=m
 CONFIG_PACKAGE_plistutil=m
-CONFIG_PACKAGE_usbmuxd=m
+CONFIG_PACKAGE_usbmuxd=y
 # end of libimobiledevice
 
 CONFIG_PACKAGE_acpid=m
@@ -13439,7 +13407,7 @@ CONFIG_PACKAGE_ugps=m
 CONFIG_PACKAGE_uhubctl=m
 CONFIG_PACKAGE_uledd=m
 CONFIG_PACKAGE_unshare=m
-CONFIG_PACKAGE_usb-modeswitch=m
+CONFIG_PACKAGE_usb-modeswitch=y
 CONFIG_PACKAGE_usbreset=m
 CONFIG_PACKAGE_usbutils=m
 CONFIG_PACKAGE_uuidd=m

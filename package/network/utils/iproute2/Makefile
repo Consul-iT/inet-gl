@@ -198,6 +198,7 @@ define Package/rdma/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/rdma/rdma $(1)/usr/sbin/
 endef
 
+$(eval $(call BuildPackage,devlink))
 $(eval $(call BuildPackage,ip-tiny))
 $(eval $(call BuildPackage,ip-full))
 $(eval $(call BuildPackage,tc))
@@ -205,5 +206,4 @@ $(eval $(call BuildPackage,genl))
 $(eval $(call BuildPackage,ip-bridge))
 $(eval $(call BuildPackage,ss))
 $(eval $(call BuildPackage,nstat))
-$(eval $(call BuildPackage,devlink))
 $(eval $(call BuildPackage,rdma))
