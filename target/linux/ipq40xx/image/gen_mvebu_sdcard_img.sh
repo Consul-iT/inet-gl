@@ -53,8 +53,13 @@ done
 
 model=''
 model=$(echo $OUTFILE | grep "gl-s1300-emmc")
+
+# total emmc size = 7634944 KB
+# partition interval = 1536 KB
+# mbr = 1024 KB
+# p1/p2 extra = 256KB
 [ "$model" != "" ] && {
-	ptgen_args="$ptgen_args -t 83 -p 7093504"
+	ptgen_args="$ptgen_args -t 83 -p $((7634944-${TARGET_KERNEL_PARTSIZE}*1024-${TARGET_ROOTFS_PARTSIZE}*1024-1536-256-256-1024))"
 }
 
 head=16

@@ -276,6 +276,7 @@ menu "Target Images"
 	config TARGET_ROOTFS_PARTSIZE
 		int "Root filesystem partition size (in MB)"
 		depends on USES_ROOTFS_PART || TARGET_ROOTFS_EXT4FS || TARGET_omap || TARGET_rb532 || TARGET_sunxi || TARGET_uml
+		default 512 if TARGET_ipq40xx_generic_DEVICE_glinet_gl-s1300-emmc
 		default 104
 		help
 		  Select the root filesystem partition size.
