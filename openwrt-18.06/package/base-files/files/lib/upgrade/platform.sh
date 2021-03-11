@@ -9,6 +9,7 @@ platform_expected_image() {
 
 	case "$machine" in
 		# this is from dts
+		"GL")		echo "siwifi-1688a"; return;;
 		"sf16a18")	echo "siwifi-1688a"; return;;
 		"sf19a28")	echo "siwifi-1688a"; return;;
 	esac
@@ -42,7 +43,7 @@ platform_check_image() {
 	case "$file_type" in
 		"a18")
 			local dev_siwifi_id=$(platform_expected_image)
-			echo "Found A18 image with device siwifi_id $dev_siwifi_id"
+			#echo "Found A18 image with device siwifi_id $dev_siwifi_id"
 
 			if [ "$dev_siwifi_id" != "siwifi-1688a" ]; then
 				echo "Invalid image type."

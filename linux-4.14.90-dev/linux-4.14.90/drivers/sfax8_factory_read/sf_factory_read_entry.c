@@ -203,6 +203,12 @@ static void handle_macaddr_internal(struct device_node *np,struct sfax8_factory_
 	memcpy(priv->wifi_lb_macaddr,priv->macaddr,MACADDR_SIZE);
 	memcpy(priv->wifi_hb_macaddr,priv->macaddr,MACADDR_SIZE);
 	memcpy(priv->wan_macaddr,priv->macaddr,MACADDR_SIZE);
+
+	// gl.inet mac config
+	inc_sf_mac_addr(priv->wifi_lb_macaddr,2);
+	inc_sf_mac_addr(priv->wifi_hb_macaddr,3);
+	return;
+
 	//for lb wifi address
 	if(inc_lb != 0) inc_sf_mac_addr(priv->wifi_lb_macaddr,inc_lb);
 	//for hb wifi address

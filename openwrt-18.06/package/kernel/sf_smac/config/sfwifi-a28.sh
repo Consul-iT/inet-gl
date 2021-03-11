@@ -56,7 +56,7 @@ insmod_umac(){
     use_80=${use_80-1}
     custregd=${custregd-0}
     lp_clk_ppm=${lp_clk_ppm-1000}
-    addr_maskall=${addr_maskall-0}
+    addr_maskall=${addr_maskall-1}
     ps_on=${ps_on-1}
     tx_lft=${tx_lft-100}
     tdls=${tdls-1}

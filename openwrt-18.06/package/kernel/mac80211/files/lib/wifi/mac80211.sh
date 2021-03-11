@@ -67,7 +67,8 @@ detect_mac80211() {
 		devidx=$(($devidx + 1))
 	done
 
-	for _dev in /sys/class/ieee80211/*; do
+	for _dev in `ls /sys/class/ieee80211/ -r`; do
+		_dev="/sys/class/ieee80211/$_dev"
 		[ -e "$_dev" ] || continue
 
 		dev="${_dev##*/}"
@@ -80,19 +81,21 @@ detect_mac80211() {
 		channel="1"
 		htmode=""
 		ht_capab=""
-		ssidprefix="-2.4G"
+		ssidprefix=""
 		noscan="0"
 		band="2.4G"
 		htcodex="0"
+		txpower="20"
 
 
-		iw phy "$dev" info | grep -q 'Capabilities:' && htmode=HT20
+		iw phy "$dev" info | grep -q 'Capabilities:' && htmode=HT40
 
 		iw phy "$dev" info | grep -q '5180 MHz' && {
 			mode_band="a"
 			channel="161"
-			ssidprefix=""
+			ssidprefix="-5G"
 			band="5G"
+			txpower="22"
 			iw phy "$dev" info | grep -q 'VHT Capabilities' && htmode="VHT80"
 		}
 
@@ -115,8 +118,11 @@ detect_mac80211() {
 		[ -f "/sys/devices/factory-read/countryid" ] && {
 			country=`cat /sys/devices/factory-read/countryid`
 		}
-		ssid=SiWiFi-`cat /sys/class/ieee80211/${dev}/macaddress | cut -c 13- | sed 's/://g'`$ssidprefix
-		ssid_lease=SiWiFi-租赁-$ssidprefix`cat /sys/class/ieee80211/${dev}/macaddress | cut -c 13- | sed 's/://g'`
+		#ssid=SiWiFi-`cat /sys/class/ieee80211/${dev}/macaddress | cut -c 13- | sed 's/://g'`$ssidprefix
+		#ssid_lease=SiWiFi-租赁-$ssidprefix`cat /sys/class/ieee80211/${dev}/macaddress | cut -c 13- | sed 's/://g'`
+
+		ssid=OpenWrt$ssidprefix
+		ssid_lease=OpenWrt-lease$ssidprefix
 		if [ ! -n "$country" ]; then
 			country='CN'
 		fi
@@ -129,8 +135,9 @@ detect_mac80211() {
 			set wireless.radio${devidx}=wifi-device
 			set wireless.radio${devidx}.type=mac80211
 			set wireless.radio${devidx}.country=${country}
-			set wireless.radio${devidx}.txpower_lvl=${txpower_lvl}
-			set wireless.radio${devidx}.channel=${channel}
+			set wireless.radio${devidx}.txpower=${txpower}
+			set wireless.radio${devidx}.txpower_max=${txpower}
+			set wireless.radio${devidx}.channel=auto
 			set wireless.radio${devidx}.band=${band}
 			set wireless.radio${devidx}.hwmode=11${mode_band}
 			set wireless.radio${devidx}.noscan=${noscan}

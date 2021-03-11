@@ -706,7 +706,7 @@
 				sfax8,pins = <0 11 0 &pcfg_pull_pin_default>;
 			};
 			uart0_rts: uart0-rts {
-				sfax8,pins = <0 12 0 &pcfg_pull_pin_default>;
+				sfax8,pins = <0 11 0 &pcfg_pull_pin_default>;
 			};
 		};
 
