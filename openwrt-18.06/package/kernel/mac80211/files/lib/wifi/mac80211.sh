@@ -95,7 +95,7 @@ detect_mac80211() {
 			channel="161"
 			ssidprefix="-5G"
 			band="5G"
-			txpower="22"
+			txpower="25"
 			iw phy "$dev" info | grep -q 'VHT Capabilities' && htmode="VHT80"
 		}
 
