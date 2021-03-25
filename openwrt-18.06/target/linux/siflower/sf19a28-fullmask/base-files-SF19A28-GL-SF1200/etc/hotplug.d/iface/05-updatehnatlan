@@ -1,14 +1,16 @@
 #!/bin/sh
 
-if echo "$INTERFACE" | grep -q "lan"
+if echo "$INTERFACE" | grep -q -e "lan" -e "guest"
 then
 	echo "$INTERFACE is in lan"
 else
 	exit 0
 fi
 
-lan_index=${INTERFACE:3}
-[ "x$lan_index" == "x" ] && lan_index=1
+#lan_index=${INTERFACE:3}
+#[ "x$lan_index" == "x" ] && lan_index=1
+[ "$INTERFACE" == "lan" ] && lan_index=1
+[ "$INTERFACE" == "guest" ] && lan_index=2
 [ $lan_index -gt 0 -a $lan_index -lt 8 ] || exit 0
 
 iptohex() {

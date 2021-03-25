@@ -18,7 +18,7 @@
 
 &gmac {
 	status = "okay";
-	delay = <0x40 0x20>;
+	delay = <0x24 0x21>;
 };
 
 &spi2 {
@@ -50,6 +50,7 @@
 		partition@20000 {
 			label = "u-boot";
 			reg = <0x20000 0x50000>; /* 320k */
+			read-only;
 		};
 
 		partition@70000 {
@@ -60,6 +61,7 @@
 		factory:partition@80000 {
 			label = "factory";
 			reg = <0x80000 0x10000>; /* 64k */
+			read-only;
 		};
 
 		partition@90000 {

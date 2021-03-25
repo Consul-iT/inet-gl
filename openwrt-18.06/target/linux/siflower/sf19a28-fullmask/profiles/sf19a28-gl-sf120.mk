@@ -8,7 +8,7 @@
 define Profile/SF19A28-GL-SF1200
  NAME:= GL.iNet SF1200
  PACKAGES:=\
-	kmod-leds-gpio kmod-button-hotplug
+	kmod-button-hotplug
 endef
 
 define Profile/SF19A28-GL-SF1200/Description

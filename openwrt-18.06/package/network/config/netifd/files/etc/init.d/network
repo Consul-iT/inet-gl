@@ -14,7 +14,6 @@ init_switch() {
 
 start_service() {
 	local lanip=$(uci get network.lan.ipaddr)
-	echo ${lanip} siwifi.cn > /etc/hosts
 
 	init_switch
 
