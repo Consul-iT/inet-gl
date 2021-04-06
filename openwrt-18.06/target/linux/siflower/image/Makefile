@@ -58,6 +58,7 @@ define Image/MakeSysupgradeBinary
 	cat $(KDIR)/uImage.lzma $(KDIR)/root.squashfs > $(KDIR)/$(output_name)
 	$(call prepare_generic_squashfs,$(KDIR)/$(output_name))
 	$(CP) $(KDIR)/$(output_name) $(BIN_DIR)/$(output_name)
+	$(call Build/append-metadata,$(BIN_DIR)/$(output_name))
 endef
 
 define Image/Build/Initramfs
