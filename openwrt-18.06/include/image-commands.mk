@@ -328,16 +328,14 @@ metadata_json = \
 
 ifeq ($(TOPDIR)/glinet/images.json, $(wildcard $(TOPDIR)/glinet/images.json))
     supported_devices=$(shell echo \"glinet,gl-$(EXTRA_IMAGE_NAME)\")
-	metadate_board=gl-$(EXTRA_IMAGE_NAME)
+    metadate_board=gl-$(EXTRA_IMAGE_NAME)
+    release=$(shell cat $(TOPDIR)/glinet/images.json | \
+         python -c "import json; import sys; obj=json.load(sys.stdin); print obj['profiles']['$(EXTRA_IMAGE_NAME)']['version'].encode('utf-8')")
 else
     supported_devices="unknown"
-	metadate_board=unknown
+    metadate_board=unknown
+    release=Unknown
 endif
-
-release=$(shell if [ -f $(TOPDIR)/glinet/images.json ];then \
-                              cat $(TOPDIR)/glinet/images.json | \
-                              python -c "import json; import sys; obj=json.load(sys.stdin); print obj['profiles']['$(EXTRA_IMAGE_NAME)']['version'].encode('utf-8')";\
-                          fi)
 
 metadata_gl_json = \
 	'{ $(if $(IMAGE_METADATA),$(IMAGE_METADATA)$(comma)) \
