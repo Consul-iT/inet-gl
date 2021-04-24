@@ -198,7 +198,7 @@ endif
 ifdef CONFIG_MEMORY_OPTIMIZE
 #use 32 tx queue count to balance the memory and the speed
 #EXTRA_KCONFIG += CONFIG_SF16A18_TXQ_MAX_CNT=32
-EXTRA_KCONFIG += CONFIG_SF16A18_WIFI_LITE_MEMORY=y
+EXTRA_KCONFIG += CONFIG_WIFI_LITE_MEMORY=y
 endif
 ifdef CONFIG_POWER_OPTIMIZE
 #that must be sync with lmac binaries if defined,here defined 8 to save power
@@ -277,10 +277,14 @@ endif
 	cp $(PKG_BUILD_DIR)/config/sfwifi $(1)/bin/
 	cp $(PKG_BUILD_DIR)/config/rfcmd_err $(1)/bin/
 	cp $(PKG_BUILD_DIR)/config/reload_wifi.sh $(1)/bin/
-ifeq ($(CONFIG_SF16A18_LMAC_USE_M_SFDSP), y)
 ifdef CONFIG_PACKAGE_SFUMAC_FMAC
+ifdef CONFIG_MEMORY_OPTIMIZE
+	cp $(PKG_BUILD_DIR)/config/$(SF_ARCH)/memory-opt/sf1688_lb_fmac.bin $(1)/lib/firmware/
+	cp $(PKG_BUILD_DIR)/config/$(SF_ARCH)/memory-opt/sf1688_hb_fmac.bin $(1)/lib/firmware/
+else
 	cp $(PKG_BUILD_DIR)/config/$(SF_ARCH)/sf1688_lb_fmac.bin $(1)/lib/firmware/
 	cp $(PKG_BUILD_DIR)/config/$(SF_ARCH)/sf1688_hb_fmac.bin $(1)/lib/firmware/
+endif
 else
 ifdef CONFIG_FLASH_OPTIMIZE
 	cp $(PKG_BUILD_DIR)/config/$(SF_ARCH)/flash-opt/sf1688_smac.bin $(1)/lib/firmware/
@@ -289,15 +293,8 @@ else
 	cp $(PKG_BUILD_DIR)/config/$(SF_ARCH)/sf1688_hb_smac.bin $(1)/lib/firmware/
 endif
 endif
-else
-	cp $(PKG_BUILD_DIR)/config/$(SF_ARCH)/idle_task.bin $(1)/lib/firmware/
-ifdef CONFIG_PACKAGE_SFUMAC_FMAC
-ifndef CONFIG_FLASH_OPTIMIZE
-	cp $(PKG_BUILD_DIR)/config/$(SF_ARCH)/sf1688_fmac.bin $(1)/lib/firmware/
-endif
-endif
-	cp $(PKG_BUILD_DIR)/config/$(SF_ARCH)/sf1688_smac.bin $(1)/lib/firmware/
-endif
+
+
 
 	$(INSTALL_DIR) $(1)/lib/preinit
 	cp $(PKG_BUILD_DIR)/config/99_rf_misc $(1)/lib/preinit/
